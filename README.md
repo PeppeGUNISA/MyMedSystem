@@ -1,5 +1,5 @@
 # MyMedSystem
-Data l’emergenza sanitaria dovuta dal COVD-19, si vuole creare un sistema di prenotazione per gli esami ospedalieri e visite specialistiche chiama MyMed System. Tutti i pazienti, in questo modo potranno evitare di recarsi fisicamente al CUP (Centro Unico di Prenotazione) o in farmacie abilitate, per effettuare la propria prenotazione di un esame, evitando così vari disagi, quali ad esempio assembramenti o lunghe file di attesa. 
+Data l’emergenza sanitaria dovuta dal COVID-19, si vuole creare un sistema di prenotazione per gli esami ospedalieri e visite specialistiche chiama MyMed System. Tutti i pazienti, in questo modo potranno evitare di recarsi fisicamente al CUP (Centro Unico di Prenotazione) o in farmacie abilitate, per effettuare la propria prenotazione di un esame, evitando così vari disagi, quali ad esempio assembramenti o lunghe file di attesa. 
 Il Sistema ospiterà tre utenti differenti: Utente Paziente, Utente Laboratorio/Specialista, Utente Medico curante.
 
 Il Sistema potrà fornire diverse funzionalità per quanto riguarda i pazienti:
