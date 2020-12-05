@@ -1,0 +1,670 @@
+@charset "UTF-8";
+
+body {
+  margin: 0%;
+  font-family: "Roboto", Roboto, sans-serif;
+}
+
+header {
+  padding: 0.2ex 1ex;
+  background-color: #2b78e4;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  height: 5ex;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+header h1 {
+  display: inline;
+  vertical-align: middle;
+}
+
+header div.sidebar {
+  height: 100%; /* Specify a height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #79ADF7; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+div.corpo button {
+  border-radius: 1ex;
+}
+
+header div.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  border-bottom: 1px solid black;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+header div.sidebar .closebtn {
+  position: absolute;
+  border: none;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.hidden {
+  display: none;
+}
+
+div.contenitore {
+  text-align: center;
+}
+
+div.contenitore.login {
+  margin-top: 6ex;
+}
+
+div.contenitore.login a {
+  display: block;
+}
+
+button {
+  margin: 0.5ex;
+  background-color: #2b78e4;
+  color: white;
+  padding: 2ex;
+  border: none;
+  cursor: pointer;
+}
+
+form#login input {
+  width: 80%;
+  margin-bottom: 3ex;
+  height: 6ex;
+}
+
+form#login button {
+  display: block;
+  width: 80%;
+  margin: 3ex auto;
+  background-color: #2b78e4;
+  color: white;
+  padding: 2ex;
+  border: none;
+  cursor: pointer;
+}
+
+form#login p {
+  margin-top: 6ex;
+}
+
+form#login button.registerbtn {
+  background-color: #9fc5f8;
+  color: black;
+}
+
+header h1 {
+  font-size: 2.5ex;
+}
+
+section {
+  padding: 60px 0;
+}
+
+section .section-title {
+  text-align: center;
+  color: #007b5e;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+footer {
+  padding: 2ex;
+  background-color: #2b78e4;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+}
+
+footer ul {
+  margin: 2ex auto 1;
+  padding: 0;
+  text-align: center;
+}
+
+footer ul:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+
+footer ul i {
+  font-size: 6ex;
+  color: white;
+}
+
+footer ul li {
+  list-style-type: none;
+  margin: 2ex 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+}
+
+footer div.footerend {
+  margin: 5ex 0 2ex;
+  color: white;
+  font-style: italic;
+  font-weight: normal;
+}
+
+ /* Style the tab */
+.tab {
+  margin-top: 3ex;
+  overflow: hidden;
+}
+
+/* Style the buttons that are used to open the tab content */
+div.tab button {
+  all:revert;
+  background-color: #9fc5f8;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 1px;
+  padding: 14px 16px;
+  transition: 0.3s;
+  width: 18ex;
+  border-radius: 1ex 1ex 0 0;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #2b78e4;
+  color: white;
+}
+
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  border: 1px solid #ccc;
+}
+
+div.contenitore.schedamed {
+  margin-top: 4ex;
+}
+
+div.contenitore.schedamed fieldset {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 3ex 2ex;
+}
+
+div.contenitore.schedamed fieldset legend {
+  font-weight: bold;
+}
+
+div.contenitore.schedamed fieldset div:nth-child(2n) {
+  float: left;
+}
+
+div.secondariga {
+}
+
+div.riga button.conferma {
+  margin: 2ex auto 2ex;
+  background-color: #6fa8dc;
+  border: none;
+  color: white;
+  padding: 2ex 2ex;
+  width: 70%;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+}
+
+form#nuovaprenotazione div p {
+  margin: 0 0 3ex;
+}
+
+form#nuovaprenotazione div p label {
+  display: block;
+  margin: 1ex;
+}
+
+form#nuovaprenotazione div p select {
+  width: 80%;
+}
+
+form#nuovaprenotazione div.contenitore div#calendario {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+form#nuovaprenotazione div.contenitore.fascia {
+  width: 80%;
+  margin: 0 auto;
+}
+
+form#nuovaprenotazione div.contenitore.fascia div {
+  text-align: left;
+  display: inline-block;
+}
+
+ /* Style the list */
+div.primariga ul.breadcrumb {
+  list-style: none;
+}
+
+/* Display list items side by side */
+div.primariga ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+div.primariga ul.breadcrumb li+li:before {
+  color: black;
+  content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+div.primariga ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+div.primariga ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+
+div.tabcontent div:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.tabcontent div:first-child span, div.tabcontent div:first-child img {
+  margin: 2ex 1ex;
+}
+
+div.tabcontent div:first-child img {
+  width: 7ex;
+}
+
+div.tabcontent div:nth-child(3) {
+  margin-bottom: 2ex;
+}
+
+div.tabcontent div:nth-child(3) input[type=text] {
+  width: 90%;
+  margin-bottom: 1ex;
+}
+
+div.tabcontent > div:nth-child(2) {
+  text-align: left;
+  background: #2b78e4;
+  color: white;
+  text-align: center;
+  padding: 0.1ex 0.8ex;
+  border: none;
+  margin-bottom: 1ex;
+}
+
+div.tabcontent div.radiogroup {
+  display: block;
+}
+
+div.tabella {
+  padding: 1ex;
+}
+
+div.tabella table {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+div.tabella table caption {
+  font-size: 1.3em;
+  margin: .5em 0 .75em;
+}
+ 
+div.tabella table thead {
+  border: none;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+  
+div.tabella table tr {
+  border-bottom: 3px solid #ddd;
+  display: block;
+  margin-bottom: .625em;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+div.tabella table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+  
+div.tabella table td {
+  border-bottom: 1px solid #ddd;
+  display: block;
+  font-size: .8em;
+  text-align: right;
+  padding: .625em;
+}
+  
+div.tabella table td::before {
+  /*
+  * aria-label has no advantage, it won't be read inside a table
+  content: attr(aria-label);
+  */
+  content: attr(data-label);
+  float: left;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+div.tabella table td:last-child {
+  border-bottom: 0;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (orientation: landscape) {
+  .hidden {
+    display: revert;
+  }
+  
+  div.corpo {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  div.corpo div.riga {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+  }
+  
+  div.riga button.conferma {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #6fa8dc;
+    border: none;
+    color: white;
+    padding: 2ex 2ex;
+    width: 15%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  div.corpo div.primariga {
+  }
+
+  div.contenitore {
+    flex: 1;
+    max-width: 60%;
+    text-align: center;
+    margin: 0 3% 3%;
+  }
+
+  header h1 {
+    margin-left: 3ex;
+  }
+  
+  header img {
+    display: inline;
+  }
+  
+  header div.sidebar {
+    all: initial;
+    font-family: revert;
+    margin-left: 2ex;
+  }
+  
+  header div.sidebar .closebtn {
+    display: none;
+  }
+  
+  header div.sidebar a {
+    display: block;
+    font-size: revert;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.5ex 2ex;
+    margin: 2% 0;
+    border: 1px solid black;
+    border-radius: 1ex;
+    background: white;
+  }
+  
+  div.tabcontent#Prenotazioni {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  div.tabcontent div:first-child {
+    text-align: left;
+  }
+  
+  div.tabcontent button {
+    width: 25ex;
+  }
+  
+  div.tabcontent div {
+    margin-bottom: 1ex;
+  }
+  
+  div.tabcontent div:first-child {
+    justify-content: left;
+  }
+  
+  div.tabcontent div:first-child img {
+    margin-left: 4ex;
+  }
+  
+  div.tabcontent div.radiogroup {
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  div.tabcontent > div:nth-child(2) {
+    text-align: left;
+    background: #2b78e4;
+    padding: 0 1ex;
+    border: 2px solid black;
+  }
+  
+  div.tabcontent div:nth-child(3) {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  div.tabcontent div:nth-child(3) input[type=text] {
+    flex: 1;
+  }
+  
+  div.tabcontent div:nth-child(3) * {
+    margin: 0 1ex;
+  }
+  
+    
+  div.tabcontent div.tabella table tr td:first-child,
+  div.tabcontent div.tabella table th:first-child {
+    width: 3ex;
+  }
+  
+  div.tabella table td::before {
+    all: revert;
+  }
+
+  div.tabella table td:last-child {
+    all: revert;
+  }
+  
+  div.tabcontent div.tabella table {
+    all: revert;
+    border: px solid #ccc;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 1px
+  }
+  
+  div.tabella table thead {
+    all: revert;
+  }
+
+
+  div.tabcontent div.tabella table caption {
+    all: revert;
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+
+  div.tabcontent div.tabella table tr {
+    all: revert;
+    border: 1px solid #ddd;
+    padding: .35em;
+  }
+
+  div.tabcontent div.tabella table th,
+  div.tabcontent div.tabella table td {
+    all: revert;
+    padding: .625em;
+    text-align: center;
+    border: 1px solid black;
+  }
+
+  div.tabcontent div.tabella table th {
+    font-size: .85em;
+    text-transform: uppercase;
+    background-color: #9fc5f8;
+    
+  }
+
+  div.contenitore.welcome, div.contenitore.login {
+    width: 40%;
+    display: inline-block;
+    flex-direction: column;
+  }
+
+  div.contenitore.welcome img {
+    width: 90%;
+  }
+  
+  footer div.quicklinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  footer ul {
+    display: flex;
+    flex-direction: row;
+    flex: 0.7;
+  }
+  
+  footer ul:nth-child(2) {
+    flex: 0.2;
+  }
+  
+  footer ul li {
+    display: inline;
+    flex: 1;
+    font-size: 2ex;
+  }
+  
+  div.tabcontent {
+    padding: 0;
+    word-wrap: break-word;
+  }
+  
+  div.contenitore.schedamed {
+    flex: 0.4;
+    margin-top: auto;
+    min-width: 300px;
+  }
+  
+  div.contenitore div.tab button {
+    border-radius: 1ex 1ex 0 0;
+  }
+  
+  div.corpo form#nuovaprenotazione {
+    display: flex;
+    flex: 1;
+  }
+  
+  form#nuovaprenotazione div p {
+    margin-bottom: 3ex;
+  }
+  
+  form#nuovaprenotazione div p label {
+    display: inline-block;
+    margin-bottom: 1ex;
+  }
+  
+  form#nuovaprenotazione select option {
+    min-width: 30ex;
+  }
+ 
+  form#nuovaprenotazione div.contenitore:not(:first-child) {
+    margin-top: 2ex;
+  }
+  
+  form#nuovaprenotazione div.contenitore input[type=radio] {
+    margin-bottom: 3ex;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {}
+
+/* Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
