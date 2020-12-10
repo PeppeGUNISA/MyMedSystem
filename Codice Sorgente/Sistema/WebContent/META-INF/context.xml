@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<Context>
+	<Resource name="jdbc/mymedsystem" auth="Container" driverClassName="org.mariadb.jdbc.Driver" type="javax.sql.DataSource" username="admin" password="password" url="jdbc:mariadb://localhost:3306/mymedsystem?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Rome" />
+</Context>
