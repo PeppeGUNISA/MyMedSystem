@@ -9,7 +9,7 @@
 <meta name="author" content="">
 <meta name="generator" content="">
 <meta name="robots" content="noindex">
-<link href="/MyMedSystem/css/mymedsystem.css" rel="stylesheet"
+<link href="./css/mymedsystem.css" rel="stylesheet"
 	type="text/css">
 <title>MyMedSystem | Home</title>
 </head>

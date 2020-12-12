@@ -9,7 +9,7 @@
 	<meta name="generator" content="">
 	<meta name="robots" content="noindex">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link href="/MyMedSystem/css/mymedsystem.css" rel="stylesheet" type="text/css">
+	<link href="./css/mymedsystem.css" rel="stylesheet" type="text/css">
 	<title>MyMedSystem | Prenota</title>
 </head>
 <body>

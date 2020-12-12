@@ -413,15 +413,13 @@ div.tabella table td:last-child {
   
   div.corpo {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    align-items: center;
-    justify-content: center;
     min-height: 100vh;
   }
   
   div.corpo div.riga {
     display: flex;
-    flex: 1;
     flex-direction: row;
   }
   

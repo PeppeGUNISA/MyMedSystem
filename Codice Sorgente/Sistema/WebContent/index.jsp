@@ -8,7 +8,7 @@
 	<meta name="author" content="">
 	<meta name="generator" content="">
 	<meta name="robots" content="noindex">
-	<link href="/MyMedSystem/css/mymedsystem.css" rel="stylesheet" type="text/css">
+	<link href="./css/mymedsystem.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 	<title>MyMedSystem | Home</title>
 </head>
