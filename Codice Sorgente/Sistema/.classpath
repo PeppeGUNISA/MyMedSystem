@@ -14,5 +14,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="/MyMedSystem/Codice Sorgente/Sistema/libs/gson-2.8.6.jar"/>
+	<classpathentry kind="lib" path="/MyMedSystem/Codice Sorgente/Sistema/libs/mariadb-java-client-2.6.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
