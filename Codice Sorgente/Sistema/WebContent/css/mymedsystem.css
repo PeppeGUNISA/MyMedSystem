@@ -91,7 +91,7 @@ form#login input {
   height: 6ex;
 }
 
-form#login button {
+form#login button, input[type=submit] {
   display: block;
   width: 80%;
   margin: 3ex auto;
@@ -100,6 +100,10 @@ form#login button {
   padding: 2ex;
   border: none;
   cursor: pointer;
+}
+
+div.registrazione input[type=submit] {
+  display: revert;
 }
 
 form#login p {
@@ -269,6 +273,26 @@ form#nuovaprenotazione div.contenitore.fascia div {
   display: inline-block;
 }
 
+div.registrazione {
+  margin-top: 5%;
+}
+
+div.registrazione form input, div.registrazione form select {
+  width: 80%;
+  margin: 1ex 0 2.5em 0;
+  height: 6ex;
+}
+
+div.registrazione form input[type=radio] {
+  all: revert;
+  margin: 2.5ex 0 2.5em;
+}
+
+div.registrazione span.spaziovuoto {
+  display: inline-block;
+  width: 5ex;
+}
+
  /* Style the list */
 div.primariga ul.breadcrumb {
   list-style: none;
@@ -418,10 +442,16 @@ div.tabella table td:last-child {
     min-height: 100vh;
   }
   
-  div.corpo div.riga {
+  div.corpo div.riga, div.rigacentrata {
     display: flex;
     flex-direction: row;
   }
+  
+  div.rigacentrata {
+    margin-top: 2%;
+  }
+  
+  
   
   div.riga button.conferma {
     margin-left: auto;
@@ -656,6 +686,19 @@ div.tabella table td:last-child {
   
   form#nuovaprenotazione div.contenitore input[type=radio] {
     margin-bottom: 3ex;
+  }
+  
+  div.registrazione.contenitore form {
+    display: flex;
+    max-height: 100vh;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 1;
+    max-width: 100%;
+  }
+  
+  div.registrazione.contenitore form > * {
+    width: 50%;
   }
 }
 
