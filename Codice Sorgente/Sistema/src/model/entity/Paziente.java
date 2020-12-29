@@ -16,7 +16,7 @@ public class Paziente extends Utente {
 	private String luogoNascita;
 	private GregorianCalendar dataNascita;
 	private String stato;
-	private String citt‡;
+	private String citt√†;
 	private String provincia;
 	private int cap;
 	private String indirizzo;
@@ -34,7 +34,7 @@ public class Paziente extends Utente {
 		this.luogoNascita = null;
 		this.dataNascita = null;
 		this.stato = null;
-		this.citt‡ = null;
+		this.citt√† = null;
 		this.provincia = null;
 		this.cap = 0;
 		this.indirizzo = null;
@@ -46,7 +46,7 @@ public class Paziente extends Utente {
 
 	public Paziente(String username, String password, String email, String telefono, String cellulare, String nome,
 			String cognome, String codiceFiscale, String luogoNascita, GregorianCalendar dataNascita, String stato,
-			String citt‡, String provincia, int cap, String indirizzo) {
+			String citt√†, String provincia, int cap, String indirizzo) {
 
 		super(username, password, email, telefono, cellulare, Ruolo.paziente);
 		setNome(nome);
@@ -55,7 +55,7 @@ public class Paziente extends Utente {
 		setLuogoNascita(luogoNascita);
 		setDataNascita(dataNascita);
 		setStato(stato);
-		setCitt‡(citt‡);
+		setCitt√†(citt√†);
 		setProvincia(provincia);
 		setCap(cap);
 		setIndirizzo(indirizzo);
@@ -179,29 +179,29 @@ public class Paziente extends Utente {
 
 	public void setStato(String stato) {
 
-		if (!stato.matches("(ë^[A-Za-z- ]+$í]"))
+		if (!stato.matches("(ÔøΩ^[A-Za-z- ]+$ÔøΩ]"))
 			throw new IllegalArgumentException("Stato non valido");
 		this.stato = stato;
 	}
 
 	/*
-	 * @return citt‡
+	 * @return citt√†
 	 */
 
-	public String getCitt‡() {
+	public String getCitt√†() {
 
-		return citt‡;
+		return citt√†;
 	}
 
 	/*
-	 * @param citt‡ : citt‡ da impostare
+	 * @param citt√† : citt√† da impostare
 	 */
 
-	public void setCitt‡(String citt‡) {
+	public void setCitt√†(String citt√†) {
 
-		if (!citt‡.matches("(ë^[A-Za-z- ]+$í]"))
-			throw new IllegalArgumentException("Citt‡ non valida");
-		this.citt‡ = citt‡;
+		if (!citt√†.matches("(ÔøΩ^[A-Za-z- ]+$ÔøΩ]"))
+			throw new IllegalArgumentException("citt√† non valida");
+		this.citt√† = citt√†;
 	}
 
 	/*
@@ -219,7 +219,7 @@ public class Paziente extends Utente {
 
 	public void setProvincia(String provincia) {
 
-		if (!provincia.matches("(ë^[A-Za-z- ]+$í]"))
+		if (!provincia.matches("(ÔøΩ^[A-Za-z- ]+$ÔøΩ]"))
 			throw new IllegalArgumentException("Provincia non valida");
 		this.provincia = provincia;
 	}
@@ -256,7 +256,7 @@ public class Paziente extends Utente {
 
 	public void setIndirizzo(String indirizzo) {
 
-		if (!indirizzo.matches("(ë^[A-Za-z- ]+$í]"))
+		if (!indirizzo.matches("(ÔøΩ^[A-Za-z- ]+$ÔøΩ]"))
 			throw new IllegalArgumentException("Indirizzo non valido");
 		this.indirizzo = indirizzo;
 	}

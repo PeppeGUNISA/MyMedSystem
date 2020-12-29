@@ -39,7 +39,7 @@ public class LoginControl extends HttpServlet {
 		String redirectedPage = null;
 		try {
 			Utente bean = checkLogin(username, password);
-			request.setAttribute("utente", bean);
+			request.getSession().setAttribute("utente", bean);
 
 			switch (bean.getRuolo()) {
 			case medico:

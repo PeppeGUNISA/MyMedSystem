@@ -1,1 +1,12 @@
-Creazione classe Prenotazione
+/**
+ * 
+ */
+package model.entity;
+
+/**
+ * @author 
+ *
+ */
+public class Prenotazione {
+
+}

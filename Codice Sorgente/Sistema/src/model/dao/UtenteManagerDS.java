@@ -33,6 +33,11 @@ public class UtenteManagerDS implements UtenteManager {
 
 	@Override
 	public Utente retrieve(String username, String password) throws SQLException {
+		if (!username.matches("^[a-zA-Z0-9]*$") ||
+				username.length() < 6 || username.length() > 24
+				|| !password.matches("\\d")
+				|| password.length() < 8 || password.length() > 64)
+			return null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
