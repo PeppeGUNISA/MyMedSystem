@@ -179,7 +179,7 @@ public class Paziente extends Utente {
 
 	public void setStato(String stato) {
 
-		if (!stato.matches("(�^[A-Za-z- ]+$�]"))
+		if (!stato.matches("(^[A-Za-z- ]+$]"))
 			throw new IllegalArgumentException("Stato non valido");
 		this.stato = stato;
 	}
@@ -199,7 +199,7 @@ public class Paziente extends Utente {
 
 	public void setcitta(String citta) {
 
-		if (!citta.matches("(�^[A-Za-z- ]+$�]"))
+		if (!citta.matches("(^[A-Za-z- ]+$]"))
 			throw new IllegalArgumentException("citta non valida");
 		this.citta = citta;
 	}
@@ -219,7 +219,7 @@ public class Paziente extends Utente {
 
 	public void setProvincia(String provincia) {
 
-		if (!provincia.matches("(�^[A-Za-z- ]+$�]"))
+		if (!provincia.matches("(^[A-Za-z- ]+$"))
 			throw new IllegalArgumentException("Provincia non valida");
 		this.provincia = provincia;
 	}
@@ -256,7 +256,7 @@ public class Paziente extends Utente {
 
 	public void setIndirizzo(String indirizzo) {
 
-		if (!indirizzo.matches("(�^[A-Za-z- ]+$�]"))
+		if (!indirizzo.matches("(^[A-Za-z- ]+$"))
 			throw new IllegalArgumentException("Indirizzo non valido");
 		this.indirizzo = indirizzo;
 	}
