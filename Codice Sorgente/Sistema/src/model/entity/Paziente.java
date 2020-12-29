@@ -16,7 +16,7 @@ public class Paziente extends Utente {
 	private String luogoNascita;
 	private GregorianCalendar dataNascita;
 	private String stato;
-	private String città;
+	private String citta;
 	private String provincia;
 	private int cap;
 	private String indirizzo;
@@ -34,7 +34,7 @@ public class Paziente extends Utente {
 		this.luogoNascita = null;
 		this.dataNascita = null;
 		this.stato = null;
-		this.città = null;
+		this.citta = null;
 		this.provincia = null;
 		this.cap = 0;
 		this.indirizzo = null;
@@ -46,7 +46,7 @@ public class Paziente extends Utente {
 
 	public Paziente(String username, String password, String email, String telefono, String cellulare, String nome,
 			String cognome, String codiceFiscale, String luogoNascita, GregorianCalendar dataNascita, String stato,
-			String città, String provincia, int cap, String indirizzo) {
+			String citta, String provincia, int cap, String indirizzo) {
 
 		super(username, password, email, telefono, cellulare, Ruolo.paziente);
 		setNome(nome);
@@ -55,7 +55,7 @@ public class Paziente extends Utente {
 		setLuogoNascita(luogoNascita);
 		setDataNascita(dataNascita);
 		setStato(stato);
-		setCittà(città);
+		setcitta(citta);
 		setProvincia(provincia);
 		setCap(cap);
 		setIndirizzo(indirizzo);
@@ -185,23 +185,23 @@ public class Paziente extends Utente {
 	}
 
 	/*
-	 * @return città
+	 * @return citta
 	 */
 
-	public String getCittà() {
+	public String getcitta() {
 
-		return città;
+		return citta;
 	}
 
 	/*
-	 * @param città : città da impostare
+	 * @param citta : citta da impostare
 	 */
 
-	public void setCittà(String città) {
+	public void setcitta(String citta) {
 
-		if (!città.matches("(�^[A-Za-z- ]+$�]"))
-			throw new IllegalArgumentException("città non valida");
-		this.città = città;
+		if (!citta.matches("(�^[A-Za-z- ]+$�]"))
+			throw new IllegalArgumentException("citta non valida");
+		this.citta = citta;
 	}
 
 	/*
