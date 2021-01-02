@@ -7,12 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import model.dao.MedicoManager;
+import model.dao.MedicoManagerDS;
+import model.entity.Medico;
+import model.entity.Paziente;
+
 /**
  * Servlet implementation class MedicoControl
  */
 @WebServlet(description = "Controlla le info del medico di base del paziente", urlPatterns = { "/MedicoControl" })
 public class MedicoControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static MedicoManager medManager = new MedicoManagerDS();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -26,16 +35,22 @@ public class MedicoControl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        
+        Medico medico = medManager.getMedico((Paziente) request.getSession().getAttribute("utente"));
+        if (medico != null) {
+        	// Invio asincrono in json
+        	response.getWriter().write(new Gson().toJson(medico));
+        } else
+        	return;
 	}
 
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="model.entity.Paziente" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +14,7 @@
 <title>MyMedSystem | Home</title>
 </head>
 <body>
+	<% Paziente paziente = (Paziente) session.getAttribute("utente"); %>
 	<header>
 		<h1>MyMed System</h1>
 		<img alt="" src="./imgs/iconmonstr-user-circle-thin.svg"
@@ -119,7 +120,7 @@
 					</div>
 			</div>
 		</div>
-			<div class="contenitore schedamed">
+			<div class="contenitore schedamed" id="schedamed">
 				<fieldset>
 					<legend>Scheda medico</legend>
 					<div>Indirizzo:</div>
@@ -132,7 +133,9 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<script src="./js/jquery.js"></script>
 	<script src="./js/paziente.js"></script>
+	<script src="./js/caricaMedicoAPaziente.js"></script>
 </body>
 </html>
