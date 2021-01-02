@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.GregorianCalendar;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import model.entity.Paziente;
 import model.entity.Utente;
 import model.entity.Utente.Ruolo;
 
@@ -33,14 +35,16 @@ public class UtenteManagerDS implements UtenteManager {
 
 	@Override
 	public Utente retrieve(String username, String password) throws SQLException {
+		
+		Utente user = null;
 		if (!username.matches("^[a-zA-Z0-9]*$") ||
 				username.length() < 6 || username.length() > 24
 				|| !password.matches("\\d")
 				|| password.length() < 8 || password.length() > 64)
-			return null;
+			return user;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
+		
 		String selectSQL = "SELECT * FROM " + UtenteManagerDS.TABLE_NAME + " WHERE username = ? AND password = ?";
 
 		try {
@@ -50,11 +54,10 @@ public class UtenteManagerDS implements UtenteManager {
 			preparedStatement.setString(1, username);
 			
 			ResultSet rs = preparedStatement.executeQuery();
-			
 		    while (rs.next()) {
 		    	Ruolo ruolo = Ruolo.valueOf(rs.getString("ruolo"));
-				
 				selectSQL = "SELECT * FROM ? WHERE username = ?";
+				rs.close();
 				preparedStatement = connection.prepareStatement(selectSQL);
 				preparedStatement.setString(1, ruolo.toString());
 				preparedStatement.setString(2, username);
@@ -63,7 +66,24 @@ public class UtenteManagerDS implements UtenteManager {
 				//TODO: Implementare in base al db
 				switch(ruolo) {
 					case paziente:
-						//
+						Paziente paziente = new Paziente();
+						// TODO: implementare stringhe, dati dummy per ora
+						paziente.setNome("");
+						paziente.setCognome("");
+						paziente.setEmail("");
+						paziente.setPassword("");
+						paziente.setCap(0);
+						paziente.setCellulare("");
+						paziente.setcitta("");
+						paziente.setCodiceFiscale("");
+						paziente.setDataNascita(new GregorianCalendar());
+						paziente.setIndirizzo("");
+						paziente.setStato("");
+						paziente.setTelefono("");
+						paziente.setLuogoNascita("");
+						paziente.setProvincia("");
+						paziente.setUsername("");
+						user = paziente;
 						break;
 					case medico:
 						//
@@ -75,6 +95,7 @@ public class UtenteManagerDS implements UtenteManager {
 						//
 						break;
 				}
+				
 		        
 		      }
 			
@@ -87,13 +108,12 @@ public class UtenteManagerDS implements UtenteManager {
 					connection.close();
 			}
 		}
-		// TODO: restituisci utente
-		return null;
+		return user;
 	}
 	
 	/**
 	 * Si potrebbe inserire questa operazione nei Manager di Medico e Laboratorio,
-	 * in modo da rendere più chiaro il codice
+	 * in modo da rendere piu' chiaro il codice
 	 */
 	@Override
 	public boolean containsIdentificativo(String identificativo) throws SQLException {

@@ -147,7 +147,7 @@ public class Paziente extends Utente {
 	 * @return dataNascita
 	 */
 
-	public GregorianCalendar dataNascita() {
+	public GregorianCalendar getDataNascita() {
 
 		return dataNascita;
 	}

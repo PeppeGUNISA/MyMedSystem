@@ -5,6 +5,7 @@ package model.dao;
 
 import java.sql.SQLException;
 
+import exception.AlreadyRegisteredException;
 import model.entity.Paziente;
 
 /**
@@ -20,6 +21,8 @@ public interface PazienteManager {
 	 * @throws SQLException 
 	 */
 	boolean save(Paziente paziente) throws SQLException;
+
+	void check(String username, String cf) throws SQLException, AlreadyRegisteredException;
 	
 	// TODO: il resto dei metodi
 
