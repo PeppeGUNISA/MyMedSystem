@@ -32,6 +32,8 @@ public class UtenteManagerDS implements UtenteManager {
 	}
 
 	private static final String TABLE_NAME = "utente";
+	private static final String RECAPITO_NAME = "recapito";
+
 
 	@Override
 	public Utente retrieve(String username, String password) throws SQLException {
@@ -44,45 +46,40 @@ public class UtenteManagerDS implements UtenteManager {
 			return user;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		
-		String selectSQL = "SELECT * FROM " + UtenteManagerDS.TABLE_NAME + " WHERE username = ? AND password = ?";
-
 		try {
 			connection = ds.getConnection();
 			
+			String selectSQL = "SELECT * FROM " + TABLE_NAME + " JOIN " + RECAPITO_NAME + " WHERE username = ? AND password = ?";
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
 			
 			ResultSet rs = preparedStatement.executeQuery();
 		    while (rs.next()) {
 		    	Ruolo ruolo = Ruolo.valueOf(rs.getString("ruolo"));
-				selectSQL = "SELECT * FROM ? WHERE username = ?";
-				rs.close();
-				preparedStatement = connection.prepareStatement(selectSQL);
-				preparedStatement.setString(1, ruolo.toString());
-				preparedStatement.setString(2, username);
-				rs = preparedStatement.executeQuery();
-				
+
 				//TODO: Implementare in base al db
 				switch(ruolo) {
 					case paziente:
 						Paziente paziente = new Paziente();
 						// TODO: implementare stringhe, dati dummy per ora
-						paziente.setNome("");
-						paziente.setCognome("");
-						paziente.setEmail("");
-						paziente.setPassword("");
-						paziente.setCap(0);
-						paziente.setCellulare("");
-						paziente.setcitta("");
-						paziente.setCodiceFiscale("");
-						paziente.setDataNascita(new GregorianCalendar());
-						paziente.setIndirizzo("");
-						paziente.setStato("");
-						paziente.setTelefono("");
-						paziente.setLuogoNascita("");
-						paziente.setProvincia("");
-						paziente.setUsername("");
+						paziente.setNome(rs.getString("nome"));
+						paziente.setCognome(rs.getString("cognome"));
+						paziente.setEmail(rs.getString("email"));
+						paziente.setPassword(rs.getString("password"));
+						paziente.setCap(rs.getString("cap"));
+						paziente.setCellulare(rs.getString("cellulare"));
+						paziente.setCitta(rs.getString("città"));
+						paziente.setCodiceFiscale(rs.getString("CFPIVA"));
+						GregorianCalendar datanascita = new GregorianCalendar();
+						datanascita.setTime(rs.getDate("datanascita"));
+						paziente.setDataNascita(datanascita);
+						paziente.setIndirizzo(rs.getString("indirizzo"));
+						paziente.setStato(rs.getString("stato"));
+						paziente.setTelefono(rs.getString("telefono"));
+						paziente.setLuogoNascita(rs.getString("luogonascita"));
+						paziente.setProvincia(rs.getString("provincia"));
+						paziente.setUsername(rs.getString("username"));
 						user = paziente;
 						break;
 					case medico:
@@ -123,6 +120,8 @@ public class UtenteManagerDS implements UtenteManager {
 		
 		String selectSQL = "SELECT 1 FROM MEDICO WHERE CF = ? UNION SELECT 1 FROM LABORATORIO WHERE PARTITAIVA = ?";
 		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, identificativo);
 			preparedStatement.setString(2, identificativo);
 			ResultSet rs = preparedStatement.executeQuery();

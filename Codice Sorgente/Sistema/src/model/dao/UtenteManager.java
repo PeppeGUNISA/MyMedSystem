@@ -3,7 +3,6 @@ package model.dao;
 import java.sql.SQLException;
 
 import model.entity.Utente;
-import model.entity.Utente.Ruolo;
 
 public interface UtenteManager {
 	/**

@@ -24,7 +24,8 @@
 			</div>
 			<div class="contenitore registrazione">
 				<form action="SecondFormControl"
-					onsubmit="event.preventDefault(); validateSecondForm(this)" method="post">
+					method="post">
+					<!-- onsubmit="event.preventDefault(); validateSecondForm(this)"  -->
 
 					<div>
 						<label for="nome">Nome</label>
@@ -39,22 +40,28 @@
 						<input type="text" id="cognome" name="cognome" required>
 					</div>
 					<div>
-						<label for="nascita">Data di nascita</label>
+						<label for="datanascita">Data di nascita</label>
 					</div>
 					<div>
-						<input type="date" id="nascita" name="nascita" required>
+						<input type="date" id="datanascita" name="datanascita" required>
 					</div>
 					<div>
-						<label for="luogo">Luogo di nascita</label>
+						<label for="luogonascita">Luogo di nascita</label>
 					</div>
 					<div>
-						<input type="text" id="luogo" name="luogo" required>
+						<input type="text" id="luogonascita" name="luogonascita" required>
 					</div>
 					<div>
-						<label for="cf">Codice Fiscale</label>
+						<label for="stato">Stato di nascita</label>
 					</div>
 					<div>
-						<input type="text" id="cf" name="cf" required>
+						<input type="text" id="stato" name="stato" required>
+					</div>
+					<div>
+						<label for="email">Email</label>
+					</div>
+					<div>
+						<input type="email" id="email" name="email" required>
 					</div>
 					<div>
 						<label for="sesso">Sesso</label>
@@ -221,6 +228,6 @@
 		</div>
 	</div>
 
-	<script src="./js/signup.js"></script>
+	<!-- <script src="./js/signup.js"></script> -->
 </body>
 </html>

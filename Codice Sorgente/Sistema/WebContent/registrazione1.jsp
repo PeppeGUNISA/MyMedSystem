@@ -27,11 +27,11 @@
 					onsubmit="event.preventDefault(); validateFirstForm(this)" method="post">
 					<div class="row">
 						<div>
-							<label for="email">E-Mail</label>
+							<label for="email">Codice Fiscale</label>
 						</div>
 						<div>
-							<input type="email" id="email" name="email"
-								placeholder="La tua e-mail..." required>
+							<input type="text" id="cf" name="cf"
+								placeholder="Il tuo Codice Fiscale..." required>
 						</div>
 						<div>
 							<label for="username">Username</label>

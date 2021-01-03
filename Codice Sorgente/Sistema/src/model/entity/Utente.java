@@ -77,13 +77,6 @@ public abstract class Utente {
 	 * @param password password da impostare
 	 */
 	public void setPassword(String password) {
-		/**
-		 * 
-		 */
-		if ((!password.matches("\\d") && !password.matches("[A-Za-z]")) // La password contiene almeno un numero e una lettera
-				|| (password.length() < 8 && password.length() > 64))
-			throw new IllegalArgumentException("Password non valida");
-		
 		this.password = password;
 	}
 

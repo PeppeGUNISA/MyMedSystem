@@ -22,7 +22,7 @@ function checkEmail(inputtxt) {
 function checkPasswordFormat(inputtxt) {
 	var number = /\d/;
 	var letter = /[A-Za-z]/;
-	if(inputtxt.value.match(number) && inputtxt.value.match(number)) {
+	if(inputtxt.value.match(letter) && inputtxt.value.match(number)) {
 		console.log("Password ok");
 		return true;
 	} else
@@ -129,12 +129,12 @@ function validateFirstForm(obj) {
 		name.classList.remove("error");
 	}
 	
-	var email = document.getElementsByName("email")[0];
-	if(!checkEmail(email)) {
+	var cf = document.getElementsByName("cf")[0];
+	if(!checkCF(cf)) {
 		valid = false;
-		email.classList.add("error");
+		cf.classList.add("error");
 	} else {
-		email.classList.remove("error");
+		cf.classList.remove("error");
 	}
 	
 	var password = document.getElementsByName("password")[0];
@@ -142,9 +142,9 @@ function validateFirstForm(obj) {
 	
 	if(!checkPasswordFormat(password)) {
 		valid = false;
-		email.classList.add("error");
+		password.classList.add("error");
 	} else {
-		email.classList.remove("error");
+		password.classList.remove("error");
 	}
 	
 	if(!checkConfirmationPassword(password.value, confirmpassword.value)) {
