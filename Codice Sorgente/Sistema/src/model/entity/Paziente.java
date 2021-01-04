@@ -28,6 +28,7 @@ public class Paziente extends Utente {
 	public Paziente() {
 
 		super();
+		setRuolo(Ruolo.paziente);
 		this.nome = null;
 		this.cognome = null;
 		this.codiceFiscale = null;
@@ -76,7 +77,7 @@ public class Paziente extends Utente {
 
 	public void setNome(String nome) {
 
-		if (nome.matches("\\d+")) // Se c'è almeno un numero
+		if (nome.matches("\\d+")) // Se c'ï¿½ almeno un numero
 			throw new IllegalArgumentException("Nome non valido");
 		this.nome = nome;
 	}
@@ -96,7 +97,7 @@ public class Paziente extends Utente {
 
 	public void setCognome(String cognome) {
 
-		if (cognome.matches("\\d+")) // Se c'è almeno un numero
+		if (cognome.matches("\\d+")) // Se c'ï¿½ almeno un numero
 			throw new IllegalArgumentException("Cognome non valido");
 		this.cognome = cognome;
 	}

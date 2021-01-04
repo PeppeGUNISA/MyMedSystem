@@ -26,7 +26,7 @@ public abstract class Utente {
 		this.email = null;
 		this.telefono = null;
 		this.cellulare = null;
-		this.ruolo = Ruolo.paziente;
+		this.ruolo = null;
 	}
 	
 	/**
@@ -95,6 +95,10 @@ public abstract class Utente {
 			throw new IllegalArgumentException("E-Mail non valida");
 			
 		this.email = email;
+	}
+	
+	public void setRuolo(Ruolo ruolo) {
+		this.ruolo = ruolo;
 	}
 
 	/**

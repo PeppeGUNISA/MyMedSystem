@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.util.GregorianCalendar;
 
 import javax.naming.Context;
@@ -11,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import model.entity.Laboratorio;
 import model.entity.Paziente;
 import model.entity.Utente;
 import model.entity.Utente.Ruolo;
@@ -69,7 +71,7 @@ public class UtenteManagerDS implements UtenteManager {
 						paziente.setPassword(rs.getString("password"));
 						paziente.setCap(rs.getString("cap"));
 						paziente.setCellulare(rs.getString("cellulare"));
-						paziente.setCitta(rs.getString("città"));
+						paziente.setCitta(rs.getString("citta"));
 						paziente.setCodiceFiscale(rs.getString("CFPIVA"));
 						GregorianCalendar datanascita = new GregorianCalendar();
 						datanascita.setTime(rs.getDate("datanascita"));
@@ -86,7 +88,21 @@ public class UtenteManagerDS implements UtenteManager {
 						//
 						break;
 					case laboratorio:
-						//
+						Laboratorio laboratorio = new Laboratorio();
+						laboratorio.setUsername(rs.getString("username"));
+						laboratorio.setPassword(rs.getString("password"));
+						laboratorio.setEmail(rs.getString("email"));
+						laboratorio.setTelefono(rs.getString("telefono"));
+						laboratorio.setCellulare(rs.getString("cellulare"));
+						laboratorio.setCap(rs.getString("cap"));
+						laboratorio.setCitta(rs.getString("citta"));
+						laboratorio.setpIva(rs.getString("CFPIVA"));
+						laboratorio.setProvincia(rs.getString("provincia"));
+						laboratorio.setDenominazione(rs.getString("nome"));
+						laboratorio.setOrarioApertura(LocalTime.of(Integer.parseInt(rs.getString("oraApertura")), 0));
+						laboratorio.setOrarioChiusura(LocalTime.of(Integer.parseInt(rs.getString("oraApertura")), 0));
+						laboratorio.setGiorniApertura(Laboratorio.stringAsGiorni(rs.getString("giorniApertura")));
+						user = laboratorio;
 						break;
 					case operatoreAsl:
 						//
