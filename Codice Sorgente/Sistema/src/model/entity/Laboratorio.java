@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Laboratorio extends Utente {
 	
-	public enum Giorno { Lunedì, Martedì, Mercoledì, Giovedì, Venerdì, Sabato, Domenica }
+	public static enum Giorno { Lunedi, Martedi, Mercoledi, Giovedi, Venerdi, Sabato, Domenica }
 	
 	//TODO: implementare controlli, converrebbe avere due colonne per orario apertura e chiusura
 	private String pIva;

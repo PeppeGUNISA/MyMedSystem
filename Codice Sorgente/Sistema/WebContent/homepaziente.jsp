@@ -21,7 +21,7 @@
 			onclick="openNav()">
 		<div id="sidebar" class="sidebar">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="#">Profilo Paziente</a> <a href="#">Logout</a>
+			<a href="#">Profilo Paziente</a> <a href="./LogoutControl">Logout</a>
 		</div>
 	</header>
 	<div class="corpo">

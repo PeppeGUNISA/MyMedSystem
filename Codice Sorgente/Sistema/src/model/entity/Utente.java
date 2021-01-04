@@ -136,7 +136,7 @@ public abstract class Utente {
 	 * @param cellulare cellulare da impostare
 	 */
 	public void setCellulare(String cellulare) {
-		if (!cellulare.matches("^[0-9]+$") && (cellulare.length() < 9 && cellulare.length() > 15))
+		if (!(cellulare == null) && (!cellulare.matches("^[0-9]+$") && (cellulare.length() < 9 && cellulare.length() > 15)))
 			throw new IllegalArgumentException("Cellulare non valido");
 		
 		this.cellulare = cellulare;

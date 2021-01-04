@@ -13,6 +13,8 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import model.entity.Laboratorio;
+import model.entity.Medico;
+import model.entity.OperatoreASL;
 import model.entity.Paziente;
 import model.entity.Utente;
 import model.entity.Utente.Ruolo;
@@ -35,6 +37,7 @@ public class UtenteManagerDS implements UtenteManager {
 
 	private static final String TABLE_NAME = "utente";
 	private static final String RECAPITO_NAME = "recapito";
+	private static final String ORARIO_NAME = "orario";
 
 
 	@Override
@@ -43,7 +46,6 @@ public class UtenteManagerDS implements UtenteManager {
 		Utente user = null;
 		if (!username.matches("^[a-zA-Z0-9]*$") ||
 				username.length() < 6 || username.length() > 24
-				|| !password.matches("\\d")
 				|| password.length() < 8 || password.length() > 64)
 			return user;
 		Connection connection = null;
@@ -51,7 +53,10 @@ public class UtenteManagerDS implements UtenteManager {
 		try {
 			connection = ds.getConnection();
 			
-			String selectSQL = "SELECT * FROM " + TABLE_NAME + " JOIN " + RECAPITO_NAME + " WHERE username = ? AND password = ?";
+			String selectSQL = "SELECT * FROM " + TABLE_NAME + " u LEFT JOIN " + RECAPITO_NAME
+					+ " r ON u.username = r.username LEFT JOIN " + ORARIO_NAME
+					+ " o on u.username = o.username"
+					+ " WHERE u.username = ? AND u.password = ?";
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, username);
 			preparedStatement.setString(2, password);
@@ -85,7 +90,21 @@ public class UtenteManagerDS implements UtenteManager {
 						user = paziente;
 						break;
 					case medico:
-						//
+						Medico medico = new Medico();
+						medico.setUsername(rs.getString("username"));
+						medico.setPassword(rs.getString("password"));
+						medico.setEmail(rs.getString("email"));
+						medico.setTelefono(rs.getString("telefono"));
+						medico.setCellulare(rs.getString("cellulare"));
+						medico.setCap(rs.getString("cap"));
+						medico.setCitta(rs.getString("citta"));
+						medico.setCodiceFiscale(rs.getString("CFPIVA"));
+						medico.setProvincia(rs.getString("provincia"));
+						medico.setDenominazione(rs.getString("nome"));
+						medico.setOrarioApertura(LocalTime.of(Integer.parseInt(rs.getString("orarioapertura")), 0));
+						medico.setOrarioChiusura(LocalTime.of(Integer.parseInt(rs.getString("orariochiusura")), 0));
+						medico.setGiorniApertura(Medico.stringAsGiorni(rs.getString("giorniApertura")));
+						user = medico;
 						break;
 					case laboratorio:
 						Laboratorio laboratorio = new Laboratorio();
@@ -99,13 +118,20 @@ public class UtenteManagerDS implements UtenteManager {
 						laboratorio.setpIva(rs.getString("CFPIVA"));
 						laboratorio.setProvincia(rs.getString("provincia"));
 						laboratorio.setDenominazione(rs.getString("nome"));
-						laboratorio.setOrarioApertura(LocalTime.of(Integer.parseInt(rs.getString("oraApertura")), 0));
-						laboratorio.setOrarioChiusura(LocalTime.of(Integer.parseInt(rs.getString("oraApertura")), 0));
-						laboratorio.setGiorniApertura(Laboratorio.stringAsGiorni(rs.getString("giorniApertura")));
+						laboratorio.setOrarioApertura(LocalTime.of(Integer.parseInt(rs.getString("orarioapertura")), 0));
+						laboratorio.setOrarioChiusura(LocalTime.of(Integer.parseInt(rs.getString("orariochiusura")), 0));
+						laboratorio.setGiorniApertura(Laboratorio.stringAsGiorni(rs.getString("giornoapertura")));
 						user = laboratorio;
 						break;
 					case operatoreAsl:
-						//
+						OperatoreASL operatore = new OperatoreASL();
+						operatore.setUsername(rs.getString("username"));
+						operatore.setPassword(rs.getString("password"));
+						operatore.setEmail(rs.getString("email"));
+						operatore.setCodiceFiscale(rs.getString("CFPIVA"));
+						operatore.setNome(rs.getString("nome"));
+						operatore.setCognome(rs.getString("cognome"));
+						user = operatore;
 						break;
 				}
 				

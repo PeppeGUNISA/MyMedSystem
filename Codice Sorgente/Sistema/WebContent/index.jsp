@@ -26,13 +26,13 @@
 				<img src="./imgs/logo_notitle.png">
 			</div>
 				<div class="contenitore login">
-				<form action="#" id="login">
-					<input type="text" placeholder="Username">
-					<input type="text" placeholder="Password">
+				<form action="LoginControl" id="login" method="post">
+					<input type="text" placeholder="Username" name="username">
+					<input type="password" placeholder="Password" name="password">
 					<a href="#">Password dimenticata?</a>
 					<button type="submit" class="loginbtn">Login</button>
 					<p>Sei nuovo su MyMedSystem?</p>
-					<button type="button" class="registerbtn">Registrati</button>
+					<button type="button" class="conferma">Carica</button>
 				</form>
 			</div>
 		</div>
