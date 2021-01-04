@@ -57,6 +57,7 @@ public class LoginControl extends HttpServlet {
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			redirectedPage = "/index.jsp";
 		}
 		response.sendRedirect(request.getContextPath() + redirectedPage);
@@ -68,6 +69,7 @@ public class LoginControl extends HttpServlet {
 		try {
 			user = ds.retrieve(username, password);
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new SQLException("Errore di connessione al database");
 		}
 		if (user != null)

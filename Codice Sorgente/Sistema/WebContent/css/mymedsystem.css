@@ -277,7 +277,7 @@ div.registrazione {
   margin-top: 5%;
 }
 
-div.registrazione form input, div.registrazione form select {
+div.registrazione form input, div.registrazione form select, form#nuovaprestazione input, form#nuovaprestazione select {
   width: 80%;
   margin: 1ex 0 2.5em 0;
   height: 6ex;
@@ -474,6 +474,10 @@ div.tabella table td:last-child {
     max-width: 60%;
     text-align: center;
     margin: 0 3% 3%;
+  }
+  
+  div.contenitore.inserimento {
+    max-width: 100%;
   }
 
   header h1 {
@@ -686,6 +690,24 @@ div.tabella table td:last-child {
   
   form#nuovaprenotazione div.contenitore input[type=radio] {
     margin-bottom: 3ex;
+  }
+  
+  form#nuovaprestazione > * {
+    margin: 4ex;
+  }
+  
+  form#nuovaprestazione label {
+    display: block;
+  }
+  
+  form#nuovaprestazione div.campiprestazione {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  form#nuovaprestazione div.campiprestazione input {
+    flex: 1;
+    max-width: 30%;
   }
   
   div.registrazione.contenitore form {
