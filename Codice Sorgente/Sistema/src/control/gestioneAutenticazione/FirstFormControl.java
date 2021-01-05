@@ -64,7 +64,7 @@ public class FirstFormControl extends HttpServlet {
 		user.setCodiceFiscale(cf);
 		request.getSession().setAttribute("paziente", user);
 		
-		response.sendRedirect("./registrazione2.jsp");
+		response.sendRedirect("./paziente/registrazione2.jsp");
 	}
 
 	private void checkFormat(String username, String password, String cf) {

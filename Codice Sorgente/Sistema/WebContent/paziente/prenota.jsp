@@ -9,13 +9,13 @@
 	<meta name="generator" content="">
 	<meta name="robots" content="noindex">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link href="./css/mymedsystem.css" rel="stylesheet" type="text/css">
+	<link href="../css/mymedsystem.css" rel="stylesheet" type="text/css">
 	<title>MyMedSystem | Prenota</title>
 </head>
 <body>
 	<header>
 		<h1>MyMed System</h1>
-		<img alt="" src="./imgs/iconmonstr-user-circle-thin.svg" onclick="openNav()">
+		<img alt="" src="../imgs/iconmonstr-user-circle-thin.svg" onclick="openNav()">
 		<div id="sidebar" class="sidebar">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			<a href="#">Profilo Paziente</a>
@@ -81,6 +81,6 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="./js/paziente.js"></script>
+	<script src="../js/paziente.js"></script>
 </body>
 </html>

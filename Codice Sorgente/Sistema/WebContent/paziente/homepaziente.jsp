@@ -9,7 +9,7 @@
 <meta name="author" content="">
 <meta name="generator" content="">
 <meta name="robots" content="noindex">
-<link href="./css/mymedsystem.css" rel="stylesheet"
+<link href="../css/mymedsystem.css" rel="stylesheet"
 	type="text/css">
 <title>MyMedSystem | Home</title>
 </head>
@@ -17,11 +17,11 @@
 	<% Paziente paziente = (Paziente) session.getAttribute("utente"); %>
 	<header>
 		<h1>MyMed System</h1>
-		<img alt="" src="./imgs/iconmonstr-user-circle-thin.svg"
+		<img alt="" src="../imgs/iconmonstr-user-circle-thin.svg"
 			onclick="openNav()">
 		<div id="sidebar" class="sidebar">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="#">Profilo Paziente</a> <a href="./LogoutControl">Logout</a>
+			<a href="#">Profilo Paziente</a> <a href="../LogoutControl">Logout</a>
 		</div>
 	</header>
 	<div class="corpo">
@@ -40,7 +40,7 @@
 				<!-- Tab content -->
 				<div id="Prenotazioni" class="tabcontent">
 					<div>
-						<img alt="" src="./imgs/add-button-svgrepo-com.svg">
+						<img alt="" src="../imgs/add-button-svgrepo-com.svg">
 						<span>Nuova prenotazione</span>
 					</div>
 					<div>
@@ -134,8 +134,8 @@
 		</div>
 	</div>
 	
-	<script src="./js/jquery.js"></script>
-	<script src="./js/paziente.js"></script>
-	<script src="./js/caricaMedicoAPaziente.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/paziente.js"></script>
+	<script src="../js/caricaMedicoAPaziente.js"></script>
 </body>
 </html>
