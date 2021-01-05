@@ -14,7 +14,6 @@ public class Referto {
 	private String id;
 	private String note;
 	private File file;
-	private String paziente;
 	/**
 	 * @return the id
 	 */
@@ -51,18 +50,5 @@ public class Referto {
 	public void setFile(File file) {
 		this.file = file;
 	}
-	/**
-	 * @return the paziente
-	 */
-	public String getPaziente() {
-		return paziente;
-	}
-	/**
-	 * @param paziente the paziente to set
-	 */
-	public void setPaziente(String paziente) {
-		this.paziente = paziente;
-	}
-	
 	
 }

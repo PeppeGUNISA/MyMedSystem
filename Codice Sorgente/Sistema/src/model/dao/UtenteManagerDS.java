@@ -118,8 +118,8 @@ public class UtenteManagerDS implements UtenteManager {
 						laboratorio.setpIva(rs.getString("CFPIVA"));
 						laboratorio.setProvincia(rs.getString("provincia"));
 						laboratorio.setDenominazione(rs.getString("nome"));
-						laboratorio.setOrarioApertura(LocalTime.of(Integer.parseInt(rs.getString("orarioapertura")), 0));
-						laboratorio.setOrarioChiusura(LocalTime.of(Integer.parseInt(rs.getString("orariochiusura")), 0));
+						laboratorio.setOrarioApertura(rs.getTime("orarioapertura").toLocalTime());
+						laboratorio.setOrarioChiusura(rs.getTime("orariochiusura").toLocalTime());
 						laboratorio.setGiorniApertura(Laboratorio.stringAsGiorni(rs.getString("giornoapertura")));
 						user = laboratorio;
 						break;

@@ -43,16 +43,16 @@ public class LoginControl extends HttpServlet {
 
 			switch (bean.getRuolo()) {
 			case medico:
-				redirectedPage = "medico/homemedico.jsp";
+				redirectedPage = "/medico/homemedico.jsp";
 				break;
 			case paziente:
-				redirectedPage = "paziente/homepaziente.jsp";
+				redirectedPage = "/paziente/homepaziente.jsp";
 				break;
 			case laboratorio:
-				redirectedPage = "laboratorio/homelaboratorio.jsp";
+				redirectedPage = "/laboratorio/homelaboratorio.jsp";
 				break;
 			case operatoreAsl:
-				redirectedPage = "operatoreAsl/homeasl.jsp";
+				redirectedPage = "/operatoreAsl/homeasl.jsp";
 				break;
 			}
 

@@ -76,6 +76,32 @@ div.contenitore.login a {
   display: block;
 }
 
+div.tabcontent a {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+div.tabcontent a:link {
+  color: black;
+  text-decoration: none;
+}
+
+div.tabcontent a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+div.tabcontent a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+div.tabcontent a:active {
+  color: black;
+  text-decoration: none;
+}
+
 button {
   margin: 0.5ex;
   background-color: #2b78e4;
@@ -229,6 +255,10 @@ div.contenitore.schedamed fieldset div:nth-child(2n) {
   float: left;
 }
 
+tbody#campiprestazioni i {
+  font-size: 3ex;
+}
+
 div.secondariga {
 }
 
@@ -277,10 +307,35 @@ div.registrazione {
   margin-top: 5%;
 }
 
-div.registrazione form input, div.registrazione form select, form#nuovaprestazione input, form#nuovaprestazione select {
+div.registrazione form input,
+div.registrazione form select,
+form#nuovaprestazione input,
+form#nuovaprestazione select {
   width: 80%;
   margin: 1ex 0 2.5em 0;
   height: 6ex;
+}
+
+form#nuovoReferto input[type=text], 
+form#nuovoReferto select,
+form#nuovoReferto textarea {
+  margin: 1ex 0 2.5em 0;
+  height: 6ex;
+  min-width: 100%;
+}
+
+form#nuovoReferto div.input-group input {
+  max-width: 500px;
+  min-width: 40%;
+  margin: 2ex 0 4ex;
+}
+
+form#nuovoReferto textarea {
+  min-height: 15ex;
+}
+
+form#nuovoReferto label {
+  display: block;
 }
 
 div.registrazione form input[type=radio] {
@@ -563,8 +618,8 @@ div.tabella table td:last-child {
   }
   
     
-  div.tabcontent div.tabella table tr td:first-child,
-  div.tabcontent div.tabella table th:first-child {
+  div.tabcontent div.tabella table tr td:nth-child(4),
+  div.tabcontent div.tabella table th:nth-child(4) {
     width: 3ex;
   }
   
@@ -626,6 +681,15 @@ div.tabella table td:last-child {
 
   div.contenitore.welcome img {
     width: 90%;
+  }
+  
+  form#nuovoReferto input[type=text], 
+  form#nuovoReferto select,
+  form#nuovoReferto textarea {
+    margin: 1ex 0 2.5em 0;
+    height: 6ex;
+    min-width: 40%;
+    max-width: 500px;
   }
   
   footer div.quicklinks {
@@ -709,7 +773,7 @@ div.tabella table td:last-child {
     flex: 1;
     max-width: 30%;
   }
-  
+    
   div.registrazione.contenitore form {
     display: flex;
     max-height: 100vh;

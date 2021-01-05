@@ -27,8 +27,8 @@
 			</div>
 				<div class="contenitore login">
 				<form action="LoginControl" id="login" method="post">
-					<input type="text" placeholder="Username" name="username">
-					<input type="password" placeholder="Password" name="password">
+					<input type="text" placeholder="Username" name="username" required>
+					<input type="password" placeholder="Password" name="password" required>
 					<a href="#">Password dimenticata?</a>
 					<button type="submit" class="loginbtn">Login</button>
 					<p>Sei nuovo su MyMedSystem?</p>
