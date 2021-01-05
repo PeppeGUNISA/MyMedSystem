@@ -9,7 +9,7 @@
 <meta name="author" content="">
 <meta name="generator" content="">
 <meta name="robots" content="noindex">
-<link href="../css/mymedsystem.css" rel="stylesheet"
+<link href="./css/mymedsystem.css" rel="stylesheet"
 	type="text/css">
 <title>MyMedSystem | Home</title>
 </head>
@@ -17,11 +17,11 @@
 	<% Laboratorio paziente = (Laboratorio) session.getAttribute("utente"); %>
 	<header>
 		<h1>MyMed System</h1>
-		<img alt="" src="../imgs/iconmonstr-user-circle-thin.svg"
+		<img alt="" src="./imgs/iconmonstr-user-circle-thin.svg"
 			onclick="openNav()">
 		<div id="sidebar" class="sidebar">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="#">Profilo Laboratorio</a> <a href="../LogoutControl">Logout</a>
+			<a href="#">Profilo Laboratorio</a> <a href="./LogoutControl">Logout</a>
 		</div>
 	</header>
 	<div class="corpo">
@@ -54,7 +54,8 @@
 		</div>
 	</div>
 	
-	<script src="../js/jquery.js"></script>
-	<script src="../js/laboratorio.js"></script>
+	<script src="./js/jquery.js"></script>
+	<script src="./js/laboratorio.js"></script>
+	<script src="./js/caricaTuttePrestazioni.js"></script>
 </body>
 </html>
