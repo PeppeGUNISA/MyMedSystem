@@ -127,7 +127,8 @@ public class PrestazioneManagerDS implements PrestazioneManager {
 		List<Prestazione> prestazioni = new ArrayList<>();
 		try {
 			connection = ds.getConnection();
-			String selectSQL = "SELECT * FROM " + PRESTAZIONE_NAME + " p JOIN " + OFFERTA_NAME + " o ON p.IDprestazione = o.IDprestazione WHERE o.usernamelaboratorio = ?";
+			String selectSQL = "SELECT * FROM " + PRESTAZIONE_NAME + " p JOIN " + OFFERTA_NAME
+					+ " o ON p.IDprestazione = o.IDprestazione WHERE o.usernamelaboratorio = ?";
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, username);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -149,6 +150,29 @@ public class PrestazioneManagerDS implements PrestazioneManager {
 			}
 		}
 		return prestazioni;
+	}
+
+	@Override
+	public void delete(String codicePrestazione, String usernameLaboratorio) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			connection = ds.getConnection();
+			String deleteSQL = "DELETE FROM " + OFFERTA_NAME + " WHERE IDprestazione = ? AND usernamelaboratorio = ?";
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setString(1, codicePrestazione);
+			preparedStatement.setString(2, usernameLaboratorio);
+			preparedStatement.executeUpdate();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+
 	}
 
 }

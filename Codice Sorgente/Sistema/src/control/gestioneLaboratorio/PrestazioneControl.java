@@ -48,7 +48,7 @@ public class PrestazioneControl extends HttpServlet {
 			e.printStackTrace();
 			response.sendError(Response.SC_INTERNAL_SERVER_ERROR, "Problema temporaneo del server, riprova più tardi.");
 		}
-		String redirectedPage = "/homelaboratorio.jsp";
+		String redirectedPage = "/laboratorio/homelaboratorio.jsp";
 		response.sendRedirect(request.getContextPath() + redirectedPage);
 	}
 

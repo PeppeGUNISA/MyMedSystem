@@ -23,4 +23,6 @@ public interface PrestazioneManager {
 
 	List<Prestazione> getPrestazioni(String username) throws SQLException;
 
+	void delete(String codicePrestazione, String usernameLaboratorio) throws SQLException;
+
 }

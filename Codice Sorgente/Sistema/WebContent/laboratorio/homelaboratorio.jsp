@@ -3,15 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="MyMedSystem">
-<meta name="author" content="">
-<meta name="generator" content="">
-<meta name="robots" content="noindex">
-<link href="../css/mymedsystem.css" rel="stylesheet"
-	type="text/css">
-<title>MyMedSystem | Home</title>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="MyMedSystem">
+	<meta name="author" content="">
+	<meta name="generator" content="">
+	<meta name="robots" content="noindex">
+	<link href="../css/mymedsystem.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+	<title>MyMedSystem | Home</title>
 </head>
 <body>
 	<% Laboratorio paziente = (Laboratorio) session.getAttribute("utente"); %>
@@ -40,8 +40,10 @@
 				<!-- Tab content -->
 				<div id="Prestazioni" class="tabcontent">
 					<div>
-						<img alt="" src="../imgs/add-button-svgrepo-com.svg">
-						<span>Nuova prestazione</span>
+						<a href="./CaricaPrestazione.jsp">
+							<img alt="" src="../imgs/add-button-svgrepo-com.svg">
+							<span>Nuova prestazione</span>
+						</a>
 					</div>
 					<div>
 						<h2>Elenco prestazioni</h2>
@@ -59,13 +61,13 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th scope="col"></th>
 									<th scope="col">Prestazione</th>
 									<th scope="col">Codice</th>
 									<th scope="col">Costo</th>
+									<th scope="col"></th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="campiprestazioni">
 								<tr>
 									<td scope="row" data-label="">@</td>
 									<td data-label="Prestazione">Emocromo</td>
@@ -124,5 +126,6 @@
 	
 	<script src="../js/jquery.js"></script>
 	<script src="../js/laboratorio.js"></script>
+	<script src="../js/caricaPrestazioniHome.js"></script>
 </body>
 </html>

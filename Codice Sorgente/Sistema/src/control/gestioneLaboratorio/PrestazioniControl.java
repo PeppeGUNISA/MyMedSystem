@@ -2,7 +2,6 @@ package control.gestioneLaboratorio;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.ServletException;
