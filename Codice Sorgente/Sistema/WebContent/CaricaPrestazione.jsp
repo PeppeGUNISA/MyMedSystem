@@ -56,5 +56,6 @@
 	
 	<script src="./js/jquery.js"></script>
 	<script src="./js/laboratorio.js"></script>
+	<script src="./js/caricaTuttePrestazioni.js"></script>
 </body>
 </html>
