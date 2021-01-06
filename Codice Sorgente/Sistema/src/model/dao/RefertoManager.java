@@ -16,8 +16,6 @@ import model.entity.Referto;
  */
 public interface RefertoManager {
 
-	void check(String codiceFiscale) throws SQLException, NotRegisteredException;
-
 	void save(Referto referto, String usernameLaboratorio, String idPrestazione, String codiceFiscale)
 			throws SQLException, IOException;
 

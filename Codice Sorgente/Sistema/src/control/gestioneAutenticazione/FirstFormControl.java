@@ -48,10 +48,11 @@ public class FirstFormControl extends HttpServlet {
 			if (!password.equals(confirmPassword))
 				response.sendError(Response.SC_FORBIDDEN, "Le password non corrispondono.");
 			checkFormat(username, password, cf);
-			checkSignUp(username, cf);
+			if (checkSignUp(username, cf))
+				throw new AlreadyRegisteredException();
 		} catch (AlreadyRegisteredException e) {
 			e.printStackTrace();
-			response.sendError(Response.SC_FORBIDDEN, "Username o CF già registrati!");
+			response.sendError(Response.SC_FORBIDDEN, "Username o CF giï¿½ registrati!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
@@ -72,11 +73,11 @@ public class FirstFormControl extends HttpServlet {
 				&& Pattern.compile("\\d").matcher(password).find() && Pattern.compile("[A-Za-z]").matcher(password).find() && password.length() >= 8
 				&& password.length() <= 64 && cf.matches(
 						"^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$")))
-			throw new IllegalArgumentException("Uno dei campi non è valido.");
+			throw new IllegalArgumentException("Uno dei campi non ï¿½ valido.");
 	}
 
-	private void checkSignUp(String username, String cf) throws SQLException, AlreadyRegisteredException {
-		ds.check(username, cf);
+	private boolean checkSignUp(String username, String cf) throws SQLException, AlreadyRegisteredException {
+		return ds.check(username, cf);
 	}
 
 }

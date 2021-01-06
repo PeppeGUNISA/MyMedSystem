@@ -50,34 +50,6 @@ public class RefertoManagerDS implements RefertoManager {
 	private static final String PRESTAZIONE_NAME = "prestazione";
 
 	@Override
-	public void check(String codiceFiscale) throws SQLException, NotRegisteredException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		String selectSQL = "SELECT COUNT(*) AS totale from " + UTENTE_NAME + " WHERE CFPIVA = ?";
-
-		try {
-			connection = ds.getConnection();
-
-			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, codiceFiscale);
-			preparedStatement.executeQuery();
-			ResultSet rs = preparedStatement.getResultSet();
-			rs.next();
-			if (rs.getInt("totale") == 0)
-				throw new NotRegisteredException();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-	}
-
-	@Override
 	public void save(Referto referto, String usernameLaboratorio, String idPrestazione, String codiceFiscale)
 			throws SQLException, IOException {
 		Connection connection = null;

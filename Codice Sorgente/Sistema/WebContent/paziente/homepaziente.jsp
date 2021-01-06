@@ -66,7 +66,7 @@
 									<th scope="col">Data</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="campiprenotazioni">
 								<tr>
 									<td scope="row" data-label="">@</td>
 									<td data-label="Prenotazione">Visita all'occhio</td>
@@ -106,7 +106,7 @@
 									<th scope="col">Data</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="campireferti">
 								<tr>
 									<td scope="row" data-label="">@</td>
 									<td data-label="Prenotazione">Visita all'occhio</td>
@@ -136,6 +136,5 @@
 	
 	<script src="../js/jquery.js"></script>
 	<script src="../js/paziente.js"></script>
-	<script src="../js/caricaMedicoAPaziente.js"></script>
 </body>
 </html>

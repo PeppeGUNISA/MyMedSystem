@@ -21,6 +21,8 @@ import org.apache.catalina.connector.Response;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 
 import exception.NotRegisteredException;
+import model.dao.PazienteManager;
+import model.dao.PazienteManagerDS;
 import model.dao.RefertoManager;
 import model.dao.RefertoManagerDS;
 import model.entity.Referto;
@@ -35,6 +37,7 @@ public class CaricamentoControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	static RefertoManager ds = new RefertoManagerDS();
+	static PazienteManager uds = new PazienteManagerDS();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -66,7 +69,8 @@ public class CaricamentoControl extends HttpServlet {
 		String codiceFiscale = request.getParameter("codice");
 
 		try {
-			ds.check(codiceFiscale);
+			if (!uds.check(null, codiceFiscale))
+				throw new NotRegisteredException();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			response.sendError(Response.SC_INTERNAL_SERVER_ERROR, "Problema temporaneo del server, riprova più tardi.");
