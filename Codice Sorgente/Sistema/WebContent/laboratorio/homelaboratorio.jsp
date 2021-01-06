@@ -101,19 +101,21 @@
 							<thead>
 								<tr>
 									<th scope="col"></th>
-									<th scope="col">Prenotazione</th>
+									<th scope="col">Referto</th>
 									<th scope="col">Codice</th>
-									<th scope="col">Luogo</th>
+									<th scope="col">Paziente</th>
 									<th scope="col">Data</th>
+									<th scope="col"></th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="campireferti">
 								<tr>
-									<td scope="row" data-label="">@</td>
-									<td data-label="Prenotazione">Visita all'occhio</td>
+									<td scope="row" data-label="Referto">Visita all'occhio</td>
 									<td data-label="Codice">AAACERCASI</td>
-									<td data-label="Luogo">Capodichino</td>
+									<td data-label="Paziente">Peppe</td>
 									<td data-label="Data">05/02/2021</td>
+									<td data-label="">@</td>
+									<td data-label="">@</td>
 								</tr>
 							</tbody>
 							<tfoot>

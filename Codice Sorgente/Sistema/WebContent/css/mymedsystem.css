@@ -617,12 +617,6 @@ div.tabella table td:last-child {
     margin: 0 1ex;
   }
   
-    
-  div.tabcontent div.tabella table tr td:nth-child(4),
-  div.tabcontent div.tabella table th:nth-child(4) {
-    width: 3ex;
-  }
-  
   div.tabella table td::before {
     all: revert;
   }
