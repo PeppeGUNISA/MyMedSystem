@@ -58,7 +58,7 @@ public class SecondFormControl extends HttpServlet {
 			dataNascita.setTime(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("datanascita")));
 			
 			checkFormat(nome, cognome, email, telefono, cellulare, provincia, comune, indirizzo, cap, stato,
-					luogoNascita);
+					luogoNascita, dataNascita);
 			
 			Paziente user = (Paziente) request.getSession().getAttribute("paziente");
 			user.setNome(nome);
@@ -91,20 +91,25 @@ public class SecondFormControl extends HttpServlet {
 	}
 
 	private void checkFormat(String nome, String cognome, String email, String telefono, String cellulare,
-			String provincia, String comune, String indirizzo, String cap, String stato, String luogoNascita) {
+			String provincia, String comune, String indirizzo, String cap, String stato, String luogoNascita, GregorianCalendar dataNascita) {
+		GregorianCalendar oggi = new GregorianCalendar();
 		if ( Pattern.compile("\\d").matcher(nome).find()
 				|| Pattern.compile("\\d").matcher(cognome).find()
 				|| nome.length() == 0
 				|| cognome.length() == 0
 				|| !email.matches("\\S+@\\S+\\.\\S+")
 				|| !telefono.matches("^[0-9]+$")
-				|| !cellulare.matches("^[0-9]+$")
+				|| (cellulare == null || !cellulare.matches("^[0-9]+$"))
 				|| provincia.length() == 0
+				|| provincia.matches("^[A-Za-z- ]+$")
 				|| comune.length() == 0
+				|| comune.matches("^[A-Za-z- ]+$")
 				|| indirizzo.length() == 0
+				|| indirizzo.matches("^[A-Za-z-, ]+$")
 				|| !cap.matches("^[0-9]+$")
 				|| stato.length() == 0
-				|| luogoNascita.length() == 0)
+				|| luogoNascita.length() == 0
+				|| dataNascita.compareTo(oggi) > 0)
 			throw new IllegalArgumentException();
 	}
 }
