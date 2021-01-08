@@ -58,7 +58,7 @@ public class RefertoManagerDS implements RefertoManager {
 		try {
 			connection = ds.getConnection();
 
-			String destinationPath = "C:" + File.separator + "referti" + File.separator + usernameLaboratorio
+			String destinationPath = "referti" + File.separator + usernameLaboratorio
 					+ File.separator + referto.getFile().getName() + ".pdf";
 
 			String insertSQL = "INSERT INTO " + REFERTO_NAME
@@ -88,12 +88,13 @@ public class RefertoManagerDS implements RefertoManager {
 
 			preparedStatement.close();
 
-			destinationPath = "C:" + File.separator + "referti" + File.separator + usernameLaboratorio + File.separator
+			destinationPath = "referti" + File.separator + usernameLaboratorio + File.separator
 					+ id + ".pdf";
 
 			FileInputStream fileOrig = new FileInputStream(referto.getFile().getAbsolutePath());
 			File file = new File(destinationPath);
 			file.getParentFile().mkdirs();
+			System.out.println(file.getAbsolutePath());
 			FileOutputStream fileDest = new FileOutputStream(file);
 
 			byte[] buffer = new byte[1024];
