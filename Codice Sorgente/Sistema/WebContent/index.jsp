@@ -37,7 +37,7 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="footer.html" />
+	 <%@include file="footer.html" %>
 </body>
 
 </html>
