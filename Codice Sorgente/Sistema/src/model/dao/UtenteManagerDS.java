@@ -12,6 +12,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.mariadb.jdbc.MariaDbDataSource;
+
 import model.entity.Laboratorio;
 import model.entity.Medico;
 import model.entity.OperatoreASL;
@@ -35,10 +37,18 @@ public class UtenteManagerDS implements UtenteManager {
 		}
 	}
 
-	private static final String TABLE_NAME = "utente";
+	private static final String UTENTE_NAME = "utente";
 	private static final String RECAPITO_NAME = "recapito";
 	private static final String ORARIO_NAME = "orario";
 
+
+	public UtenteManagerDS() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public UtenteManagerDS(MariaDbDataSource ds2) {
+		this.ds = ds2;
+	}
 
 	@Override
 	public Utente retrieve(String username, String password) throws SQLException {
@@ -53,7 +63,7 @@ public class UtenteManagerDS implements UtenteManager {
 		try {
 			connection = ds.getConnection();
 			
-			String selectSQL = "SELECT * FROM " + TABLE_NAME + " u LEFT JOIN " + RECAPITO_NAME
+			String selectSQL = "SELECT * FROM " + UTENTE_NAME + " u LEFT JOIN " + RECAPITO_NAME
 					+ " r ON u.username = r.username LEFT JOIN " + ORARIO_NAME
 					+ " o on u.username = o.username"
 					+ " WHERE u.username = ? AND u.password = ?";
@@ -160,12 +170,11 @@ public class UtenteManagerDS implements UtenteManager {
 		PreparedStatement preparedStatement = null;
 		boolean presente;
 		
-		String selectSQL = "SELECT 1 FROM MEDICO WHERE CF = ? UNION SELECT 1 FROM LABORATORIO WHERE PARTITAIVA = ?";
+		String selectSQL = "SELECT 1 FROM " + UTENTE_NAME + " WHERE CFPIVA = ?";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, identificativo);
-			preparedStatement.setString(2, identificativo);
 			ResultSet rs = preparedStatement.executeQuery();
 			if (rs.isBeforeFirst())
 				presente = true;
