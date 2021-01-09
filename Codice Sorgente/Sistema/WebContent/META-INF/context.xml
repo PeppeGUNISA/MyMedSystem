@@ -2,5 +2,5 @@
 <!DOCTYPE xml>
 
 <Context>
-	<Resource name="jdbc/mymedsystem" auth="Container" driverClassName="org.mariadb.jdbc.Driver" type="javax.sql.DataSource" username="tiger@mymedsystem" password="CJ9JvBc87UEuT&amp;?e" url="jdbc:sqlserver://$AZ_DATABASE_NAME.database.windows.net:1433;database=demo;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;" />
+	<Resource name="jdbc/mymedsystem" auth="Container" driverClassName="org.mariadb.jdbc.Driver" type="javax.sql.DataSource" username="tiger@mymedsystem" password="CJ9JvBc87UEuT&amp;?e" url="jdbc:mariadb://mymedsystem.mariadb.database.azure.com:3306/mymedsystemdb?useSSL=true" />
 </Context>
