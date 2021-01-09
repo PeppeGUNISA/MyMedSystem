@@ -659,6 +659,10 @@ div.tabella table td:last-child {
     text-align: center;
     border: 1px solid black;
   }
+  
+  div.tabcontent div.tabella table td a {
+    display: block;
+  }
 
   div.tabcontent div.tabella table th {
     font-size: .85em;

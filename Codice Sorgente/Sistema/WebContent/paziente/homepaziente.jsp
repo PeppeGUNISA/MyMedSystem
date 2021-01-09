@@ -11,6 +11,8 @@
 <meta name="robots" content="noindex">
 <link href="../css/mymedsystem.css" rel="stylesheet"
 	type="text/css">
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
 <title>MyMedSystem | Home</title>
 </head>
 <body>
@@ -136,5 +138,6 @@
 	
 	<script src="../js/jquery.js"></script>
 	<script src="../js/paziente.js"></script>
+	<script src="../js/caricaRefertiPaziente.js"></script>
 </body>
 </html>

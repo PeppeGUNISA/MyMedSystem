@@ -18,6 +18,7 @@ public class Referto {
 	private String paziente;
 	private String prestazione;
 	private Date dataInserimento;
+	private String laboratorio;
 	
 	/**
 	 * @return the id
@@ -90,6 +91,18 @@ public class Referto {
 	 */
 	public void setDataInserimento(Date dataInserimento) {
 		this.dataInserimento = dataInserimento;
+	}
+	/**
+	 * @return the laboratorio
+	 */
+	public String getLaboratorio() {
+		return laboratorio;
+	}
+	/**
+	 * @param laboratorio the laboratorio to set
+	 */
+	public void setLaboratorio(String laboratorio) {
+		this.laboratorio = laboratorio;
 	}
 	
 }

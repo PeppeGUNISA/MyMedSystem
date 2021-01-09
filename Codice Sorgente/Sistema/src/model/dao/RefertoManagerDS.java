@@ -48,6 +48,7 @@ public class RefertoManagerDS implements RefertoManager {
 	private static final String REFERTO_NAME = "referto";
 	private static final String UTENTE_NAME = "utente";
 	private static final String PRESTAZIONE_NAME = "prestazione";
+	private static final String RECAPITO_NAME = "recapito";
 
 	@Override
 	public void save(Referto referto, String usernameLaboratorio, String idPrestazione, String codiceFiscale)
@@ -154,7 +155,7 @@ public class RefertoManagerDS implements RefertoManager {
 	}
 
 	@Override
-	public List<Referto> getReferti(String usernameLaboratorio) throws SQLException {
+	public List<Referto> getRefertiLaboratorio(String usernameLaboratorio) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		List<Referto> referti = new ArrayList<>();
@@ -174,7 +175,7 @@ public class RefertoManagerDS implements RefertoManager {
 				referto.setFile(new File(rs.getString("file")));
 				referto.setPaziente(rs.getString("CFPIVA"));
 				referto.setPrestazione(rs.getString("descrizione"));
-				referto.setDataInserimento(new Date(rs.getDate("dataInserimentO").getTime()));
+				referto.setDataInserimento(new Date(rs.getDate("dataInserimento").getTime()));
 				referti.add(referto);
 			}
 		} finally {
@@ -187,6 +188,69 @@ public class RefertoManagerDS implements RefertoManager {
 			}
 		}
 		return referti;
+	}
+
+	@Override
+	public List<Referto> getRefertiPaziente(String usernamePaziente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		List<Referto> referti = new ArrayList<>();
+		try {
+			connection = ds.getConnection();
+			String selectSQL = "SELECT r.IDreferto, p.descrizione, r.file, u.citta, r.datainserimento FROM "
+					+ REFERTO_NAME + " r JOIN " + RECAPITO_NAME + " u on u.username = r.usernamelaboratorio JOIN "
+					+ PRESTAZIONE_NAME + " p on r.IDprestazione = p.IDprestazione WHERE usernamepaziente = ?";
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, usernamePaziente);
+			ResultSet rs = preparedStatement.executeQuery();
+			Referto referto = null;
+			while (rs.next()) {
+				referto = new Referto();
+				referto.setId(rs.getString("IDreferto"));
+				referto.setFile(new File(rs.getString("file")));
+				referto.setLaboratorio(rs.getString("citta"));
+				referto.setPrestazione(rs.getString("descrizione"));
+				referto.setDataInserimento(new Date(rs.getDate("dataInserimento").getTime()));
+				referti.add(referto);
+			}
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return referti;
+	}
+
+	@Override
+	public Referto retrieve(String id) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		Referto referto = null;
+		try {
+			connection = ds.getConnection();
+			String selectSQL = "SELECT * FROM " + REFERTO_NAME + " WHERE IDreferto = ?";
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, id);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				referto = new Referto();
+				referto.setId(rs.getString("IDreferto"));
+				referto.setFile(new File(rs.getString("file")));
+			}
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return referto;
 	}
 
 }

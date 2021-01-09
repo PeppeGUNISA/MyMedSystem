@@ -1,4 +1,4 @@
-package control.gestioneLaboratorio;
+package control.gestionePaziente;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,12 +15,13 @@ import com.google.gson.Gson;
 import model.dao.RefertoManager;
 import model.dao.RefertoManagerDS;
 import model.entity.Laboratorio;
+import model.entity.Paziente;
 import model.entity.Referto;
 
 /**
  * Servlet implementation class RefertiControl
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/RefertiControl" })
+@WebServlet(asyncSupported = true, name = "RefertiPazienteControl", urlPatterns = { "/RefertiPazienteControl" })
 public class RefertiControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -38,7 +39,8 @@ public class RefertiControl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -49,10 +51,10 @@ public class RefertiControl extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         String tipoRichiesta = request.getParameter("tipo");
         List<Referto> referti = null;
-        if (tipoRichiesta.equals("laboratorio")) {
-        	Laboratorio laboratorio = (Laboratorio) request.getSession().getAttribute("utente");
+        if (tipoRichiesta.equals("paziente")) {
+        	Paziente paziente = (Paziente) request.getSession().getAttribute("utente");
         	try {
-				referti = ds.getRefertiLaboratorio(laboratorio.getUsername());
+				referti = ds.getRefertiPaziente(paziente.getUsername());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -21,6 +21,10 @@ public interface RefertoManager {
 
 	void delete(int codiceReferto) throws SQLException;
 
-	List<Referto> getReferti(String usernameLaboratorio) throws SQLException;
+	List<Referto> getRefertiLaboratorio(String usernameLaboratorio) throws SQLException;
+
+	List<Referto> getRefertiPaziente(String username) throws SQLException;
+	
+	Referto retrieve(String id) throws SQLException;
 
 }
