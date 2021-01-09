@@ -28,7 +28,7 @@
 				<div class="contenitore">
 					<p>
 						<label for="prestazione">Seleziona tipologia prestazione:</label>
-						<select name="prestazione" id="prestazione">
+						<select name="prestazione" id="prestazione" onchange="caricaProvince(this);">
 							<option selected="selected" value="vairus">Vairus</option>
 							<option value="analisidelsangue">Analisi del sangue</option>
 							<option value="geriatrica">Visita Geriatrica</option>
@@ -36,7 +36,7 @@
 					</p>
 					<p>
 						<label for="provincia">Seleziona provincia:</label>
-						<select name="provincia" id="provincia">
+						<select name="provincia" id="provincia" onclick="caricaLaboratori(this);">
 							<option selected="selected" value="avellino">Avellino</option>
 							<option value="benevento">Benevento</option>
 							<option value="caserta">Caserta</option>
@@ -45,8 +45,8 @@
 						</select>
 					</p>
 					<p>
-						<label for="distsanitario">Seleziona distretto sanitario:</label>
-						<select name="distsanitario" id="distsanitario">
+						<label for="distretto">Seleziona distretto sanitario:</label>
+						<select name="distretto" id="distretto" onclick="caricaDate(this)">
 							<option selected="selected" value="avellino">Avellino</option>
 							<option value="benevento">Benevento</option>
 							<option value="caserta">Caserta</option>
@@ -62,7 +62,7 @@
 				</div>
 				<div class="contenitore fascia">
 					<label>Fascia oraria:</label><br><br>
-					<div>
+					<div id="radiofascia">
 						<input type="radio" name="orario" id="otto" value="otto">
 						<label for="otto">8:00 - 9:00</label><br>
 						<input type="radio" name="orario" id="nove" value="nove">
@@ -82,5 +82,8 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="../js/paziente.js"></script>
+	<script src="../js/prenotazioniPaziente.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+
 </body>
 </html>

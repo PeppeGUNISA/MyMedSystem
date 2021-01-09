@@ -1,11 +1,20 @@
 package control.gestionePaziente;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
+import model.dao.PrenotazioneManager;
+import model.dao.PrenotazioneManagerDS;
+import model.entity.Laboratorio;
 
 /**
  * Servlet implementation class DataControl
@@ -34,8 +43,19 @@ public class DataControl extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		PrenotazioneManager ds = new PrenotazioneManagerDS();
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		String username = request.getParameter("username");
+		List<Integer> giorni = null;
+		try {
+			giorni = ds.getDateLaboratorio(username);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(new Gson().toJson(giorni));
+		response.getWriter().write(new Gson().toJson(giorni));
 	}
 
 }
