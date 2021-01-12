@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.catalina.connector.Response;
 
 import model.dao.PazienteManager;
-import model.dao.PazienteManagerDS;
+import model.dao.PazienteManagerDM;
 import model.entity.Paziente;
 
 /**
@@ -26,7 +26,7 @@ import model.entity.Paziente;
 public class SecondFormControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	static PazienteManager ds = new PazienteManagerDS();
+	static PazienteManager ds = new PazienteManagerDM();
 
 	/**
 	 * @see HttpServlet#HttpServlet()

@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.GregorianCalendar;
+import java.util.regex.Pattern;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -37,6 +40,26 @@ public class PazienteManagerDS implements PazienteManager {
 		PreparedStatement preparedStatement2 = null;
 
 		boolean result = false;
+		
+		if ( Pattern.compile("\\d").matcher(paziente.getNome()).find()
+				|| Pattern.compile("\\d").matcher(paziente.getCognome()).find()
+				|| paziente.getNome().length() == 0
+				|| paziente.getCognome().length() == 0
+				|| !paziente.getEmail().matches("\\S+@\\S+\\.\\S+")
+				|| !paziente.getTelefono().matches("^[0-9]+$")
+				|| (paziente.getCellulare() == null || !paziente.getCellulare().matches("^[0-9]+$"))
+				|| paziente.getProvincia().length() == 0
+				|| paziente.getProvincia().matches("^[A-Za-z- ]+$")
+				|| paziente.getcitta().length() == 0
+				|| paziente.getcitta().matches("^[A-Za-z- ]+$")
+				|| paziente.getIndirizzo().length() == 0
+				|| paziente.getIndirizzo().matches("^[A-Za-z-, ]+$")
+				|| !paziente.getCap().matches("^[0-9]+$")
+				|| paziente.getStato().length() == 0
+				|| paziente.getLuogoNascita().length() == 0
+				|| paziente.getDataNascita().compareTo(new GregorianCalendar()) > 0) {
+				throw new IllegalArgumentException();
+		}
 
 		// TODO: in base al db
 		String insertSQL = "INSERT INTO " + TABLE_NAME

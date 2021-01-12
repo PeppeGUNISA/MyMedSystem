@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.dao.UtenteManager;
-import model.dao.UtenteManagerDS;
+import model.dao.UtenteManagerDM;
 import model.entity.Utente;
 
 /**
@@ -32,7 +32,7 @@ public class LoginControl extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -64,7 +64,7 @@ public class LoginControl extends HttpServlet {
 	}
 
 	private Utente checkLogin(String username, String password) throws Exception {
-		UtenteManager ds = new UtenteManagerDS();
+		UtenteManager ds = new UtenteManagerDM();
 		Utente user = null;
 		try {
 			user = ds.retrieve(username, password);
