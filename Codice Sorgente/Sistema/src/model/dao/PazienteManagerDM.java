@@ -22,23 +22,22 @@ public class PazienteManagerDM implements PazienteManager {
 
 		boolean result = false;
 		
-		if ( Pattern.compile("\\d").matcher(paziente.getNome()).find()
+		if (!paziente.getUsername().matches("^[a-zA-Z0-9]*$")
+				|| paziente.getUsername().length() < 6  || paziente.getUsername().length() > 24
+				|| !(Pattern.compile("\\d").matcher(paziente.getPassword()).find() && Pattern.compile("[A-Za-z]").matcher(paziente.getPassword()).find() && paziente.getPassword().length() >= 8 && paziente.getPassword().length() <= 64)
+				||!paziente.getCodiceFiscale().matches("^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$") 
+				|| Pattern.compile("\\d").matcher(paziente.getNome()).find()
 				|| Pattern.compile("\\d").matcher(paziente.getCognome()).find()
-				|| paziente.getNome().length() == 0
-				|| paziente.getCognome().length() == 0
+				|| paziente.getDataNascita().compareTo(new GregorianCalendar()) > 0
+				|| !paziente.getLuogoNascita().matches("^[A-Za-z- ]+$")
+				|| (!paziente.getTelefono().matches("^[0-9]+$") || paziente.getTelefono().length() < 8 || paziente.getTelefono().length() > 16)
 				|| !paziente.getEmail().matches("\\S+@\\S+\\.\\S+")
-				|| !paziente.getTelefono().matches("^[0-9]+$")
-				|| (paziente.getCellulare() == null || !paziente.getCellulare().matches("^[0-9]+$"))
-				|| paziente.getProvincia().length() == 0
-				|| paziente.getProvincia().matches("^[A-Za-z- ]+$")
-				|| paziente.getcitta().length() == 0
-				|| paziente.getcitta().matches("^[A-Za-z- ]+$")
-				|| paziente.getIndirizzo().length() == 0
-				|| paziente.getIndirizzo().matches("^[A-Za-z-, ]+$")
-				|| !paziente.getCap().matches("^[0-9]+$")
-				|| paziente.getStato().length() == 0
-				|| paziente.getLuogoNascita().length() == 0
-				|| paziente.getDataNascita().compareTo(new GregorianCalendar()) > 0) {
+				|| !paziente.getStato().matches("^[A-Za-z- ]+$")
+				|| !paziente.getProvincia().matches("^[A-Za-z- ]+$")
+				|| !paziente.getcitta().matches("^[A-Za-z- ]+$")
+				|| !paziente.getIndirizzo().matches("^[A-Za-z0-9-, ]+$")
+				|| !paziente.getCap().matches("^[0-9]+$") 
+				|| (paziente.getCellulare() != null && !paziente.getCellulare().matches("^[0-9]+$")) ) {
 				throw new IllegalArgumentException();
 		}
 

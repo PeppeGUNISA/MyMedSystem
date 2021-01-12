@@ -80,7 +80,7 @@ public class SecondFormControl extends HttpServlet {
 
 		} catch (ParseException e) {
 			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException | NullPointerException e) {
 			e.printStackTrace();
 			request.setAttribute("paziente", null);
 			response.sendError(Response.SC_FORBIDDEN, "Formato dei campi errato! Abilita JavaScript.");

@@ -59,10 +59,6 @@ public abstract class Utente {
 	 * @param username username da impostare
 	 */
 	public void setUsername(String username) {
-		if (!username.matches("^[a-zA-Z0-9]*$") // Username senza spazi e solo alfanumerico
-				|| (username.length() < 6  && username.length() > 24))
-			throw new IllegalArgumentException("Username non valido");
-		
 		this.username = username;
 	}
 
@@ -91,9 +87,6 @@ public abstract class Utente {
 	 * @param email email da impostare
 	 */
 	public void setEmail(String email) {
-		if (!email.matches("\\S+@\\S+\\.\\S+")) // Regex tollerante
-			throw new IllegalArgumentException("E-Mail non valida");
-			
 		this.email = email;
 	}
 	
@@ -119,9 +112,6 @@ public abstract class Utente {
 	 * @param telefono telefono da impostare
 	 */
 	public void setTelefono(String telefono) {
-		if (!telefono.matches("^[0-9]+$") && (telefono.length() < 9 && telefono.length() > 15))
-			throw new IllegalArgumentException("Telefono non valido");
-			
 		this.telefono = telefono;
 	}
 
@@ -136,9 +126,6 @@ public abstract class Utente {
 	 * @param cellulare cellulare da impostare
 	 */
 	public void setCellulare(String cellulare) {
-		if (!(cellulare == null) && (!cellulare.matches("^[0-9]+$") && (cellulare.length() < 9 && cellulare.length() > 15)))
-			throw new IllegalArgumentException("Cellulare non valido");
-		
 		this.cellulare = cellulare;
 	}
 

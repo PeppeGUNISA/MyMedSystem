@@ -22,7 +22,9 @@ import model.entity.Utente;
  *
  */
 class Test_UtenteManagerDS {
-	private static MariaDbDataSource ds;
+	
+	private MariaDbDataSource ds;
+	private UtenteManager um;
 	
 	private Connection connection;
 
@@ -36,6 +38,7 @@ class Test_UtenteManagerDS {
 		ds.setUser("root");
 		ds.setPassword("root");
 		connection = ds.getConnection();
+		um = new UtenteManagerDS(ds);
 	}
 
 	/**
@@ -52,7 +55,6 @@ class Test_UtenteManagerDS {
 	 */
 	@Test
 	void testRetrieveFake1() {
-		UtenteManager um = new UtenteManagerDS(ds);
 		Utente user = null;
 		try {
 			user = um.retrieve("bla", null);
@@ -69,7 +71,6 @@ class Test_UtenteManagerDS {
 	 */
 	@Test
 	void testRetrieveFake2() {
-		UtenteManager um = new UtenteManagerDS(ds);
 		Utente user = null;
 		try {
 			user = um.retrieve("blabla20", null);
@@ -83,7 +84,6 @@ class Test_UtenteManagerDS {
 	
 	@Test
 	void testRetrieveFake3() {
-		UtenteManager um = new UtenteManagerDS(ds);
 		Utente user = null;
 		try {
 			user = um.retrieve("LabPotente", "bla");
@@ -97,7 +97,6 @@ class Test_UtenteManagerDS {
 	
 	@Test
 	void testRetrieveFake4() {
-		UtenteManager um = new UtenteManagerDS(ds);
 		Utente user = null;
 		try {
 			user = um.retrieve("LabPotente", "blabla20");
@@ -111,7 +110,6 @@ class Test_UtenteManagerDS {
 	
 	@Test
 	void testRetrieveFake5() {
-		UtenteManager um = new UtenteManagerDS(ds);
 		Utente user = null;
 		try {
 			user = um.retrieve("LabPotente", "panskjwk2S");
@@ -127,7 +125,6 @@ class Test_UtenteManagerDS {
 	 */
 	@Test
 	void testContainsIdentificativoFake() {
-		UtenteManager um = new UtenteManagerDS(ds);
 		boolean flag = false;
 		try {
 			flag = um.containsIdentificativo("asd");
@@ -140,7 +137,6 @@ class Test_UtenteManagerDS {
 	
 	@Test
 	void testContainsIdentificativo() {
-		UtenteManager um = new UtenteManagerDS(ds);
 		boolean flag = false;
 		try {
 			flag = um.containsIdentificativo("10002938453");

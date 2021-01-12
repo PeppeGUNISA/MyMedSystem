@@ -21,10 +21,9 @@ import model.entity.Utente;
  *
  */
 class Test_UtenteManagerDM {
-	private static UtenteManager dm;
 	
-	private Connection connection;
-
+	private UtenteManager dm;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */

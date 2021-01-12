@@ -55,7 +55,7 @@ public class FirstFormControl extends HttpServlet {
 			response.sendError(Response.SC_FORBIDDEN, "Username o CF gi� registrati!");
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException | NullPointerException e) {
 			e.printStackTrace();
 			response.sendError(Response.SC_FORBIDDEN, "Formato dei campi errato! Abilita JavaScript.");
 		}
