@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Savepoint;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,11 +21,10 @@ import model.entity.Utente;
  * @author Cristian
  *
  */
-class Test_UtenteManager {
+class Test_UtenteManagerDS {
 	private static MariaDbDataSource ds;
 	
 	private Connection connection;
-	private Savepoint savepoint;
 
 	/**
 	 * @throws java.lang.Exception
@@ -53,35 +51,66 @@ class Test_UtenteManager {
 	 * Test method for {@link model.dao.UtenteManagerDS#retrieve(java.lang.String, java.lang.String)}.
 	 */
 	@Test
-	void testRetrieveFake() {
+	void testRetrieveFake1() {
 		UtenteManager um = new UtenteManagerDS(ds);
 		Utente user = null;
 		try {
-			user = um.retrieve("gepp", "Gepp");
+			user = um.retrieve("bla", null);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (user != null)
-			fail();
+			fail("L'utente non dovrebbe esistere");
 	}
 	
+	/**
+	 * Test method for {@link model.dao.UtenteManagerDS#retrieve(java.lang.String, java.lang.String)}.
+	 */
 	@Test
-	void testRetrieveWrongPassword() {
+	void testRetrieveFake2() {
 		UtenteManager um = new UtenteManagerDS(ds);
 		Utente user = null;
 		try {
-			user = um.retrieve("LabPotente", "Gepp");
+			user = um.retrieve("blabla20", null);
+		} catch (SQLException | NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (user != null)
+			fail("L'utente non dovrebbe esistere");
+	}
+	
+	@Test
+	void testRetrieveFake3() {
+		UtenteManager um = new UtenteManagerDS(ds);
+		Utente user = null;
+		try {
+			user = um.retrieve("LabPotente", "bla");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (user != null)
-			fail();
+			fail("L'utente non dovrebbe esistere");
 	}
 	
 	@Test
-	void testRetrieve() {
+	void testRetrieveFake4() {
+		UtenteManager um = new UtenteManagerDS(ds);
+		Utente user = null;
+		try {
+			user = um.retrieve("LabPotente", "blabla20");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (user != null)
+			fail("L'utente non dovrebbe esistere");
+	}
+	
+	@Test
+	void testRetrieveFake5() {
 		UtenteManager um = new UtenteManagerDS(ds);
 		Utente user = null;
 		try {
@@ -90,8 +119,7 @@ class Test_UtenteManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (user == null)
-			fail();
+		assertNotNull(user);
 	}
 
 	/**
@@ -107,8 +135,7 @@ class Test_UtenteManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (flag != false)
-			fail();
+		assertFalse(flag);
 	}
 	
 	@Test
@@ -121,8 +148,7 @@ class Test_UtenteManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (flag != true)
-			fail();
+		assertTrue(flag);
 	}
 
 }

@@ -12,6 +12,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.mariadb.jdbc.MariaDbDataSource;
+
 import model.entity.Laboratorio;
 import model.entity.Medico;
 import model.entity.OperatoreASL;
@@ -38,6 +40,13 @@ public class UtenteManagerDS implements UtenteManager {
 	private static final String UTENTE_NAME = "utente";
 	private static final String RECAPITO_NAME = "recapito";
 	private static final String ORARIO_NAME = "orario";
+	
+	public UtenteManagerDS() {
+	}
+	
+	public UtenteManagerDS(MariaDbDataSource ds) {
+		UtenteManagerDS.ds = ds;
+	}
 
 	@Override
 	public Utente retrieve(String username, String password) throws SQLException {
