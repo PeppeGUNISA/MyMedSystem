@@ -37,7 +37,7 @@ public class FirstFormControl extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = null, password = null, confirmPassword, cf = null;
 		try {
 			username = request.getParameter("username");

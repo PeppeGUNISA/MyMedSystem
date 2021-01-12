@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,7 +38,7 @@ public class SecondFormControl extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
 			String nome, cognome, email, telefono, cellulare, provincia, comune, indirizzo, cap, stato, luogoNascita;
@@ -56,9 +55,6 @@ public class SecondFormControl extends HttpServlet {
 			stato = request.getParameter("stato");
 			luogoNascita = request.getParameter("luogonascita");
 			dataNascita.setTime(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("datanascita")));
-			
-			checkFormat(nome, cognome, email, telefono, cellulare, provincia, comune, indirizzo, cap, stato,
-					luogoNascita, dataNascita);
 			
 			Paziente user = (Paziente) request.getSession().getAttribute("paziente");
 			user.setNome(nome);
@@ -90,26 +86,4 @@ public class SecondFormControl extends HttpServlet {
 		}
 	}
 
-	private void checkFormat(String nome, String cognome, String email, String telefono, String cellulare,
-			String provincia, String comune, String indirizzo, String cap, String stato, String luogoNascita, GregorianCalendar dataNascita) {
-		GregorianCalendar oggi = new GregorianCalendar();
-		if ( Pattern.compile("\\d").matcher(nome).find()
-				|| Pattern.compile("\\d").matcher(cognome).find()
-				|| nome.length() == 0
-				|| cognome.length() == 0
-				|| !email.matches("\\S+@\\S+\\.\\S+")
-				|| !telefono.matches("^[0-9]+$")
-				|| (cellulare == null || !cellulare.matches("^[0-9]+$"))
-				|| provincia.length() == 0
-				|| provincia.matches("^[A-Za-z- ]+$")
-				|| comune.length() == 0
-				|| comune.matches("^[A-Za-z- ]+$")
-				|| indirizzo.length() == 0
-				|| indirizzo.matches("^[A-Za-z-, ]+$")
-				|| !cap.matches("^[0-9]+$")
-				|| stato.length() == 0
-				|| luogoNascita.length() == 0
-				|| dataNascita.compareTo(oggi) > 0)
-			throw new IllegalArgumentException();
-	}
 }

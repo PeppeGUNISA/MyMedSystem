@@ -3,15 +3,12 @@
  */
 package control;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import control.gestioneAutenticazione.LoginControl;
+import model.entity.Utente;
 
 /**
  * @author Cristian
@@ -40,32 +38,24 @@ class Test_Login extends Mockito {
 	void tearDown() throws Exception {
 	}
 
-	/**
-	 * Test method for {@link control.gestioneAutenticazione.LoginControl#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)}.
-	 */
 	@Test
-	void testDoPostHttpServletRequestHttpServletResponse() {
-        HttpServletRequest request = mock(HttpServletRequest.class);       
-        HttpServletResponse response = mock(HttpServletResponse.class);    
+	void testDoPostHttpServletRequestHttpServletResponse() throws IOException, ServletException {
+		HttpServletRequest request = mock(HttpServletRequest.class);
+		HttpServletResponse response = mock(HttpServletResponse.class);
 
-        when(request.getParameter("username")).thenReturn("LabPotente");
-        when(request.getParameter("password")).thenReturn("panskjwk2S");
+		HttpSession session = mock(HttpSession.class);
 
-        StringWriter stringWriter = new StringWriter();
-        PrintWriter writer = new PrintWriter(stringWriter);
-        try {
-			when(response.getWriter()).thenReturn(writer);
-	        new LoginControl().doPost(request, response);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		LoginControl login = new LoginControl();
 
-        if (request.getAttribute("utente") == null)
-        	fail(); // only if you want to verify username was called...
+		when(request.getSession()).thenReturn(session);
+		when(request.getParameter("username")).thenReturn("LabPotente");
+		when(request.getParameter("password")).thenReturn("panskjwk2S");
+
+		login.doPost(request, response);
+
+		Mockito.verify(session).setAttribute(Mockito.eq("utente"), Mockito.any(Utente.class));
+		Mockito.verify(response).sendRedirect(request.getContextPath() + "/laboratorio/homelaboratorio.jsp");
+
 	}
 
 }
