@@ -1,6 +1,8 @@
 package control.gestionePaziente;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +47,13 @@ public class MedicoControl extends HttpServlet {
 		response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         
-        Medico medico = medManager.getMedico((Paziente) request.getSession().getAttribute("utente"));
+        Medico medico = null;
+		try {
+			medico = medManager.getMedico((Paziente) request.getSession().getAttribute("utente"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         if (medico != null) {
         	// Invio asincrono in json
         	response.getWriter().write(new Gson().toJson(medico));

@@ -17,7 +17,7 @@ public interface PrestazioneManager {
 	
 	void check(String codPrestazione, String laboratorio) throws SQLException, AlreadyRegisteredException;
 	
-	void save(Prestazione prestazione) throws SQLException;
+	void save(Prestazione prestazione) throws SQLException, IllegalArgumentException;
 	
 	List<Prestazione> getPrestazioni() throws SQLException;
 

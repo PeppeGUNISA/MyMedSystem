@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 
 import model.dao.PrenotazioneManager;
 import model.dao.PrenotazioneManagerDS;
-import model.entity.Laboratorio;
 
 /**
  * Servlet implementation class DataControl

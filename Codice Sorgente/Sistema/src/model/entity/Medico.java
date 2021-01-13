@@ -4,7 +4,6 @@
 package model.entity;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +18,7 @@ public class Medico extends Utente {
 	private String denominazione;
 	private String citta;
 	private String provincia;
+	private String indirizzo;
 	private String cap;
 	private List<Giorno> giorniApertura;
 	private LocalTime orarioApertura;
@@ -90,6 +90,16 @@ public class Medico extends Utente {
 	public void setCap(String cap) {
 		this.cap = cap;
 	}
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
+	}
+
+
 	/**
 	 * @return the giorniApertura
 	 */
@@ -125,27 +135,5 @@ public class Medico extends Utente {
 	 */
 	public void setOrarioChiusura(LocalTime orarioChiusura) {
 		this.orarioChiusura = orarioChiusura;
-	}
-	
-	public String getGiorniAsString() {
-		String stringa = "";
-		Giorno[] giorni = Giorno.values();
-		for (Giorno giorno : giorni) {
-			if (giorniApertura.contains(giorno))
-				stringa = stringa + "1";
-			else
-				stringa = stringa + "0";
-		}
-		return stringa;
-	}
-	
-	public static List<Giorno> stringAsGiorni(String stringa) {
-		List<Giorno> giorni = new ArrayList<>();
-		char[] caratteri = stringa.toCharArray();
-		for (Giorno giorno : Giorno.values()) {
-			if (caratteri[giorno.ordinal()] == '1')
-				giorni.add(giorno);
-		}
-		return giorni;
 	}
 }

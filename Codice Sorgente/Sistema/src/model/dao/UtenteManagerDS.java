@@ -111,7 +111,7 @@ public class UtenteManagerDS implements UtenteManager {
 						medico.setDenominazione(rs.getString("nome"));
 						medico.setOrarioApertura(LocalTime.of(Integer.parseInt(rs.getString("orarioapertura")), 0));
 						medico.setOrarioChiusura(LocalTime.of(Integer.parseInt(rs.getString("orariochiusura")), 0));
-						medico.setGiorniApertura(Medico.stringAsGiorni(rs.getString("giorniApertura")));
+						medico.setGiorniApertura(MedicoManagerDS.stringAsGiorni(rs.getString("giorniApertura")));
 						user = medico;
 						break;
 					case laboratorio:

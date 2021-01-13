@@ -14,10 +14,7 @@ import com.google.gson.Gson;
 
 import model.dao.PrenotazioneManager;
 import model.dao.PrenotazioneManagerDS;
-import model.dao.PrestazioneManager;
-import model.dao.PrestazioneManagerDS;
-import model.entity.Laboratorio;
-import model.entity.Prestazione;
+
 
 /**
  * Servlet implementation class ProvinceControl

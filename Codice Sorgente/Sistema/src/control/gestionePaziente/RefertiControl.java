@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 
 import model.dao.RefertoManager;
 import model.dao.RefertoManagerDS;
-import model.entity.Laboratorio;
 import model.entity.Paziente;
 import model.entity.Referto;
 

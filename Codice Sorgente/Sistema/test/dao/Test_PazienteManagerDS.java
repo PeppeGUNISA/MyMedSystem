@@ -52,6 +52,7 @@ class Test_PazienteManagerDS {
 		connection.close();
 	}
 
+	
 	@Test
 	void testCheck() throws SQLException {
 		boolean flag = dm.check("blabla20", "RNULNG62M01E506L");

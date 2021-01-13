@@ -17,6 +17,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.mariadb.jdbc.MariaDbDataSource;
+
 import model.entity.Laboratorio;
 import model.entity.Laboratorio.Giorno;
 import model.entity.Prestazione;
@@ -46,6 +48,13 @@ public class PrenotazioneManagerDS implements PrenotazioneManager {
 	private static final String OFFERTA_NAME = "offerta";
 	private static final String UTENTE_NAME = "utente";
 	private static final String ORARIO_NAME = "orario";
+	
+	public PrenotazioneManagerDS() {
+	}
+
+	public PrenotazioneManagerDS(MariaDbDataSource ds2) {
+		PrenotazioneManagerDS.ds = ds2;
+	}
 
 	@Override
 	public List<String> getProvince(String prestazione) throws SQLException {
