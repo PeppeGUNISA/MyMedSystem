@@ -23,6 +23,8 @@ function printMedico(json) {
 		"<div class='medico'>Dott. " + medico.denominazione + "</div>" +
 		"<div>Indirizzo:</div>" + 
 		"<div class='indirizzo'>" + medico.indirizzo + "</div>" + 
+		"<div>Città:</div>" +
+		"<div class=citta>" + medico.citta + "</div>" +
 		"<div>Telefono:</div>" + 
 		"<div class='telefono'>" + medico.telefono + "</div>"); //TODO: dati del medico
 	}
