@@ -19,10 +19,16 @@
 		<div id="sidebar" class="sidebar">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			<a href="#">Profilo Paziente</a>
-			<a href="#">Logout</a>
+			<a href="../LogoutControl">Logout</a>
 		</div>
 	</header>
 	<div class="corpo">
+		<div class="primariga riga">
+			<ul class="breadcrumb">
+				<li><a href="#">Home</a></li>
+				<li><a href="./homepaziente.jsp">Nuova Prenotazione</a></li>
+			</ul>
+		</div>
 		<div class="riga">
 			<form action="#" id="nuovaprenotazione">
 				<div class="contenitore">

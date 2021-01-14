@@ -42,8 +42,10 @@
 				<!-- Tab content -->
 				<div id="Prenotazioni" class="tabcontent">
 					<div>
-						<img alt="" src="../imgs/add-button-svgrepo-com.svg">
-						<span>Nuova prenotazione</span>
+						<a href="./prenota.jsp">
+							<img alt="" src="../imgs/add-button-svgrepo-com.svg">
+							<span>Nuova prenotazione</span>
+						</a>
 					</div>
 					<div>
 						<h2>Elenco prenotazioni effettuate</h2>

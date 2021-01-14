@@ -27,7 +27,7 @@
 	<div class="corpo">
 		<div class="primariga riga">
 			<ul class="breadcrumb">
-				<li><a href="#">Home</a></li>
+				<li><a href="./homelaboratorio.jsp">Home</a></li>
 				<li><a href="#">Inserimento Prestazione</a></li>
 			</ul>
 		</div>

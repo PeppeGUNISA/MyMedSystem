@@ -81,8 +81,10 @@
 				</div>
 				<div id="Referti" class="tabcontent">
 					<div>
-						<img alt="" src="../imgs/add-button-svgrepo-com.svg">
-						<span>Nuovo referto</span>
+						<a href="./InserisciReferto.jsp">
+							<img alt="" src="../imgs/add-button-svgrepo-com.svg">
+							<span>Nuovo referto</span>
+						</a>
 					</div>
 					<div>
 						<h2>Elenco referti</h2>
