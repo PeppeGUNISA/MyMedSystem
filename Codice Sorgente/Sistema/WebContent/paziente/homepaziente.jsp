@@ -124,8 +124,8 @@
 					</div>
 			</div>
 		</div>
-			<div class="contenitore schedamed" id="schedamed">
-				<fieldset>
+			<div class="contenitore schedamed">
+				<fieldset id="schedamed">
 					<legend>Scheda medico</legend>
 					<div>Indirizzo:</div>
 					<div class="indirizzo">Via Bella 22, Roma</div>
@@ -141,5 +141,6 @@
 	<script src="../js/jquery.js"></script>
 	<script src="../js/paziente.js"></script>
 	<script src="../js/caricaRefertiPaziente.js"></script>
+	<script src="../js/caricaMedicoAPaziente.js"></script>
 </body>
 </html>

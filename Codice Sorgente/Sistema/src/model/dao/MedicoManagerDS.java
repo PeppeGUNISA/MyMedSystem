@@ -71,7 +71,7 @@ public class MedicoManagerDS implements MedicoManager {
 			ResultSet rs = preparedStatement.getResultSet();
 			rs.next();
 			medico = new Medico();
-			medico.setDenominazione(rs.getString("cognome") + rs.getString("nome"));
+			medico.setDenominazione(rs.getString("cognome") + " " + rs.getString("nome"));
 			medico.setCitta(rs.getString("citta"));
 			medico.setIndirizzo(rs.getString("indirizzo"));
 			medico.setTelefono(rs.getString("telefono"));
