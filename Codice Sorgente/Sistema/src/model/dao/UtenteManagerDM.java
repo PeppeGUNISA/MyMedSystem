@@ -81,9 +81,9 @@ public class UtenteManagerDM implements UtenteManager {
 						medico.setCodiceFiscale(rs.getString("CFPIVA"));
 						medico.setProvincia(rs.getString("provincia"));
 						medico.setDenominazione(rs.getString("nome"));
-						medico.setOrarioApertura(LocalTime.of(Integer.parseInt(rs.getString("orarioapertura")), 0));
-						medico.setOrarioChiusura(LocalTime.of(Integer.parseInt(rs.getString("orariochiusura")), 0));
-						medico.setGiorniApertura(MedicoManagerDS.stringAsGiorni(rs.getString("giorniApertura")));
+						medico.setOrarioApertura(rs.getTime("orarioapertura").toLocalTime());
+						medico.setOrarioChiusura(rs.getTime("orariochiusura").toLocalTime());
+						medico.setGiorniApertura(MedicoManagerDS.stringAsGiorni(rs.getString("giornoApertura")));
 						user = medico;
 						break;
 					case laboratorio:
