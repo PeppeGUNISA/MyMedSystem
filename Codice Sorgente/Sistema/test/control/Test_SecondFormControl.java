@@ -1,5 +1,7 @@
 package control;
 
+import static org.junit.Assert.fail;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -17,7 +19,7 @@ import control.gestioneAutenticazione.SecondFormControl;
 import model.entity.Paziente;
 
 class Test_SecondFormControl extends Mockito {
-	
+
 	HttpServletRequest request;
 	HttpServletResponse response;
 	HttpSession session;
@@ -27,12 +29,12 @@ class Test_SecondFormControl extends Mockito {
 		request = mock(HttpServletRequest.class);
 		response = mock(HttpServletResponse.class);
 		session = mock(HttpSession.class);
-		
+
 		Paziente paziente = new Paziente();
 		paziente.setUsername("adgbnae2");
 		paziente.setPassword("daslfnSA23");
 		paziente.setCodiceFiscale("LDOSMC08P10D612Q");
-		
+
 		when(request.getSession()).thenReturn(session);
 		when(session.getAttribute("paziente")).thenReturn(paziente);
 	}
@@ -73,7 +75,10 @@ class Test_SecondFormControl extends Mockito {
 		when(request.getParameter("luogonascita")).thenReturn("Poggiomarino");
 		when(request.getParameter("datanascita")).thenReturn("1980-04-01");
 		SecondFormControl sfc = new SecondFormControl();
-		sfc.doPost(request, response);
+		try {
+			sfc.doPost(request, response);
+		} catch (IllegalArgumentException e) {
+		}
 		Mockito.verify(response).sendError(Response.SC_FORBIDDEN, "Formato dei campi errato! Abilita JavaScript.");
 	}
 }

@@ -1,6 +1,5 @@
 package control;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 
@@ -16,7 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import control.gestioneAutenticazione.FirstFormControl;
-import model.entity.Utente;
 
 class Test_FirstFormControl extends Mockito {
 	

@@ -25,6 +25,7 @@ public class Laboratorio extends Utente {
 	private List<Giorno> giorniApertura;
 	private LocalTime orarioApertura;
 	private LocalTime orarioChiusura;
+	private String indirizzo;
 	
 	public Laboratorio() {
 		super();
@@ -142,6 +143,14 @@ public class Laboratorio extends Utente {
 		this.orarioChiusura = orarioChiusura;
 	}
 	
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
+	}
+
 	public static List<Giorno> stringAsGiorni(String stringa) {
 		List<Giorno> giorni = new ArrayList<>();
 		char[] caratteri = stringa.toCharArray();
