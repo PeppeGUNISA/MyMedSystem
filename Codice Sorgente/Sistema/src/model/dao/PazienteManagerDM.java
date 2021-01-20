@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.GregorianCalendar;
-import java.util.regex.Pattern;
 
 import model.entity.Paziente;
 
@@ -22,22 +21,21 @@ public class PazienteManagerDM implements PazienteManager {
 
 		boolean result = false;
 		
-		if (!paziente.getUsername().matches("^[a-zA-Z0-9]*$")
-				|| paziente.getUsername().length() < 6  || paziente.getUsername().length() > 24
-				|| !(Pattern.compile("\\d").matcher(paziente.getPassword()).find() && Pattern.compile("[A-Za-z]").matcher(paziente.getPassword()).find() && paziente.getPassword().length() >= 8 && paziente.getPassword().length() <= 64)
-				||!paziente.getCodiceFiscale().matches("^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$") 
-				|| Pattern.compile("\\d").matcher(paziente.getNome()).find()
-				|| Pattern.compile("\\d").matcher(paziente.getCognome()).find()
+		if (!paziente.getUsername().matches("^[A-Za-z0-9]{6,25}$")
+				|| !paziente.getPassword().matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+){8,64}$")
+				|| !paziente.getCodiceFiscale().matches("^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$") 
+				|| !paziente.getNome().matches("^[A-Za-z ]+$")
+				|| !paziente.getCognome().matches("^[A-Za-z ]+$")
 				|| paziente.getDataNascita().compareTo(new GregorianCalendar()) > 0
 				|| !paziente.getLuogoNascita().matches("^[A-Za-z- ]+$")
-				|| (!paziente.getTelefono().matches("^[0-9]+$") || paziente.getTelefono().length() < 8 || paziente.getTelefono().length() > 16)
+				|| !paziente.getTelefono().matches("^[0-9]{8,16}$")
 				|| !paziente.getEmail().matches("\\S+@\\S+\\.\\S+")
 				|| !paziente.getStato().matches("^[A-Za-z- ]+$")
 				|| !paziente.getProvincia().matches("^[A-Za-z- ]+$")
 				|| !paziente.getcitta().matches("^[A-Za-z- ]+$")
-				|| !paziente.getIndirizzo().matches("^[A-Za-z0-9-, ]+$")
-				|| !paziente.getCap().matches("^[0-9]+$") 
-				|| (paziente.getCellulare() != null && !paziente.getCellulare().matches("^[0-9]+$")) ) {
+				|| !paziente.getIndirizzo().matches("^[A-Za-z0-9'\\.\\-\\s\\,]+$")
+				|| !paziente.getCap().matches("^[0-9]{5}$") 
+				|| (paziente.getCellulare().length() != 0 && (!paziente.getCellulare().matches("^[0-9]{8,16}$"))) ) {
 				throw new IllegalArgumentException();
 		}
 

@@ -64,18 +64,6 @@
 						<input type="email" id="email" name="email" required>
 					</div>
 					<div>
-						<label for="sesso">Sesso</label>
-					</div>
-					<div>
-						<input type="radio" name="sesso" id="maschio" value="maschio">
-						<label for="maschio">Maschio</label>
-						
-						<span class="spaziovuoto">&nbsp</span>
-						
-						<input type="radio" name="sesso" id="femmina" value="femmina">
-						<label for="femmina">Femmina</label>
-					</div>
-					<div>
 						<label for="telefono">Telefono</label>
 					</div>
 					<div>

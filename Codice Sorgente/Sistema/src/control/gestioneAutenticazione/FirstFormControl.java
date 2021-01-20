@@ -35,7 +35,8 @@ public class FirstFormControl extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = null, password = null, confirmPassword, cf = null;
@@ -44,12 +45,19 @@ public class FirstFormControl extends HttpServlet {
 			password = request.getParameter("password");
 			confirmPassword = request.getParameter("confirmpassword");
 			cf = request.getParameter("cf");
-			
+
 			if (!password.equals(confirmPassword))
 				response.sendError(Response.SC_FORBIDDEN, "Le password non corrispondono.");
 			checkFormat(username, password, cf);
 			if (checkSignUp(username, cf))
 				throw new AlreadyRegisteredException();
+			Paziente user = new Paziente();
+			user.setUsername(username);
+			user.setPassword(password);
+			user.setCodiceFiscale(cf);
+			request.getSession().setAttribute("paziente", user);
+
+			response.sendRedirect("./registrazione2.jsp");
 		} catch (AlreadyRegisteredException e) {
 			e.printStackTrace();
 			response.sendError(Response.SC_FORBIDDEN, "Username o CF gi� registrati!");
@@ -59,19 +67,11 @@ public class FirstFormControl extends HttpServlet {
 			e.printStackTrace();
 			response.sendError(Response.SC_FORBIDDEN, "Formato dei campi errato! Abilita JavaScript.");
 		}
-		Paziente user = new Paziente();
-		user.setUsername(username);
-		user.setPassword(password);
-		user.setCodiceFiscale(cf);
-		request.getSession().setAttribute("paziente", user);
-		
-		response.sendRedirect("./paziente/registrazione2.jsp");
 	}
 
 	private void checkFormat(String username, String password, String cf) {
-		if (!(username.matches("^[a-zA-Z0-9]*$") && username.length() >= 6 && username.length() <= 24
-				&& Pattern.compile("\\d").matcher(password).find() && Pattern.compile("[A-Za-z]").matcher(password).find() && password.length() >= 8
-				&& password.length() <= 64 && cf.matches(
+		if (!(username.matches("^[A-Za-z0-9]{6,25}$")
+				&& password.matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+){8,64}$") && cf.matches(
 						"^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$")))
 			throw new IllegalArgumentException("Uno dei campi non � valido.");
 	}

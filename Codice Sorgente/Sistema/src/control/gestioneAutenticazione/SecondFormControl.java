@@ -72,7 +72,7 @@ public class SecondFormControl extends HttpServlet {
 			
 			ds.save(user);
 			
-			response.sendRedirect("/index.jsp");
+			response.sendRedirect("./index.jsp");
 
 		} catch (ParseException e) {
 			e.printStackTrace();

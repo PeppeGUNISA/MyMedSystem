@@ -73,8 +73,7 @@ class Test_Registrazione extends Mockito {
 		when(request.getParameter("cf")).thenReturn("LDOSMC08P10D612Q");
 		FirstFormControl ffc = new FirstFormControl();
 		ffc.doPost(request, response);
-		Mockito.verify(session).setAttribute(Mockito.eq("paziente"), Mockito.any());
-		Mockito.verify(response).sendRedirect("./paziente/registrazione2.jsp");
+		Mockito.verify(session).setAttribute(Mockito.eq("paziente"), Mockito.any());		
 		when(request.getParameter("nome")).thenReturn("Pino");
 		when(request.getParameter("cognome")).thenReturn("Giuseppino");
 		when(request.getParameter("email")).thenReturn("giuseppe@outlook.it");

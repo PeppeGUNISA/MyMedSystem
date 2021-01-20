@@ -21,7 +21,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import exception.NotRegisteredException;
+import org.mariadb.jdbc.MariaDbDataSource;
+
 import model.entity.Referto;
 
 /**
@@ -49,6 +50,13 @@ public class RefertoManagerDS implements RefertoManager {
 	private static final String UTENTE_NAME = "utente";
 	private static final String PRESTAZIONE_NAME = "prestazione";
 	private static final String RECAPITO_NAME = "recapito";
+	
+	public RefertoManagerDS() {
+	}
+
+	public RefertoManagerDS(MariaDbDataSource ds2) {
+		RefertoManagerDS.ds = ds2;
+	}
 
 	@Override
 	public void save(Referto referto, String usernameLaboratorio, String idPrestazione, String codiceFiscale)
@@ -63,9 +71,13 @@ public class RefertoManagerDS implements RefertoManager {
 					+ File.separator + referto.getFile().getName() + ".pdf";
 
 			String insertSQL = "INSERT INTO " + REFERTO_NAME
-					+ " (IDprestazione, usernamelaboratorio, usernamepaziente, file, note) VALUES (?, ?, ?, ?, ?)";
+					+ " (IDprestazione, usernamelaboratorio, usernamepaziente, file, note, IDreferto) VALUES (?, ?, ?, ?, ?, ?)";
 			String selectSQL = "SELECT username FROM " + UTENTE_NAME + " WHERE CFPIVA = ?";
-
+			if ( !codiceFiscale.matches("^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$") 
+					|| (referto.getNote().length() != 0 && !referto.getNote().matches("^[A-Za-z',.\\s]+$"))
+					|| !referto.getId().matches("^[A-Za-z0-9]+$")
+					|| !referto.getFile().getAbsolutePath().contains("pdf"))
+				throw new IllegalArgumentException();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, codiceFiscale);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -73,24 +85,20 @@ public class RefertoManagerDS implements RefertoManager {
 			String usernamePaziente = rs.getString("username");
 			preparedStatement.close();
 
-			preparedStatement = connection.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS);
+			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, idPrestazione);
 			preparedStatement.setString(2, usernameLaboratorio);
 			preparedStatement.setString(3, usernamePaziente);
 			preparedStatement.setString(4, destinationPath);
 			preparedStatement.setString(5, referto.getNote());
+			preparedStatement.setString(6, referto.getId());
+			
 			preparedStatement.executeUpdate();
-
-			rs = preparedStatement.getGeneratedKeys();
-
-			rs.next();
-
-			int id = rs.getInt(1);
 
 			preparedStatement.close();
 
 			destinationPath = "referti" + File.separator + usernameLaboratorio + File.separator
-					+ id + ".pdf";
+					+ referto.getId() + ".pdf";
 
 			FileInputStream fileOrig = new FileInputStream(referto.getFile().getAbsolutePath());
 			File file = new File(destinationPath);
@@ -116,7 +124,7 @@ public class RefertoManagerDS implements RefertoManager {
 
 			preparedStatement = connection.prepareStatement(updateSQL);
 			preparedStatement.setString(1, destinationPath);
-			preparedStatement.setInt(2, id);
+			preparedStatement.setString(2, referto.getId());
 			preparedStatement.executeUpdate();
 		} finally {
 			try {
@@ -131,7 +139,7 @@ public class RefertoManagerDS implements RefertoManager {
 	}
 
 	@Override
-	public void delete(int codiceReferto) throws SQLException {
+	public void delete(String codiceReferto) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -141,7 +149,7 @@ public class RefertoManagerDS implements RefertoManager {
 			connection = ds.getConnection();
 
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, codiceReferto);
+			preparedStatement.setString(1, codiceReferto);
 			preparedStatement.executeQuery();
 		} finally {
 			try {

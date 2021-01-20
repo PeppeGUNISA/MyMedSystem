@@ -35,7 +35,7 @@ public class DeleteRefertoControl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int codiceReferto = Integer.parseInt((String) request.getParameter("referto"));
+		String codiceReferto = request.getParameter("referto");
 		try {
 			ds.delete(codiceReferto);
 		} catch (SQLException e) {

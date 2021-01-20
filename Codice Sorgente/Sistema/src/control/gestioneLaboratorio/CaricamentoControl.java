@@ -81,6 +81,7 @@ public class CaricamentoControl extends HttpServlet {
 
 		Referto referto = new Referto();
 		referto.setNote(request.getParameter("note"));
+		referto.setId(request.getParameter("codiceReferto"));
 		referto.setFile(file);
 		
 		Utente laboratorio = (Utente) request.getSession().getAttribute("utente");

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalTime;
 import java.util.GregorianCalendar;
 
 import javax.naming.Context;
@@ -52,9 +51,8 @@ public class UtenteManagerDS implements UtenteManager {
 	public Utente retrieve(String username, String password) throws SQLException {
 		
 		Utente user = null;
-		if (!username.matches("^[a-zA-Z0-9]*$") ||
-				username.length() < 6 || username.length() > 24
-				|| password.length() < 8 || password.length() > 64)
+		if (!username.matches("^[A-Za-z0-9]{6,25}$") ||
+			!password.matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+){8,64}$"))
 			return user;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;

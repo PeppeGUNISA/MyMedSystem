@@ -5,7 +5,6 @@ package dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.GregorianCalendar;
 
@@ -27,8 +26,6 @@ class Test_PazienteManagerDS {
 	private MariaDbDataSource ds;
 	private PazienteManager dm;
 
-	private Connection connection;
-
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -39,7 +36,6 @@ class Test_PazienteManagerDS {
 				"jdbc:mysql://localhost:3306/mymedsystemdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Rome");
 		ds.setUser("root");
 		ds.setPassword("root");
-		connection = ds.getConnection();
 		dm = new PazienteManagerDS(ds);
 	}
 
@@ -48,8 +44,6 @@ class Test_PazienteManagerDS {
 	 */
 	@AfterEach
 	void tearDown() throws Exception {
-		connection.rollback();
-		connection.close();
 	}
 
 	

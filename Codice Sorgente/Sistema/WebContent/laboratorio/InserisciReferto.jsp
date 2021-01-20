@@ -42,7 +42,7 @@
 						<input type="text" placeholder="Codice Referto" name="codiceReferto" >
 						<label for="prestazione">Tipo referto:</label>
 						<select name="prestazione" id="prestazione" required>
-							<option selected="selected" value="vairus">Vairus</option>
+							<option value="vairus">Vairus</option>
 							<option value="analisidelsangue">Analisi del sangue</option>
 							<option value="geriatrica">Visita Geriatrica</option>
 						</select>

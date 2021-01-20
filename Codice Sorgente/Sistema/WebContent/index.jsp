@@ -32,7 +32,7 @@
 					<a href="#">Password dimenticata?</a>
 					<button type="submit" class="loginbtn">Login</button>
 					<p>Sei nuovo su MyMedSystem?</p>
-					<button type="button" class="conferma">Carica</button>
+					<a href="./registrazione1.jsp"><button type="button" class="conferma">Registrati</button></a>
 				</form>
 			</div>
 		</div>

@@ -43,7 +43,6 @@ public class PrenotazioneManagerDS implements PrenotazioneManager {
 		}
 	}
 
-	private static final String PRESTAZIONE_NAME = "prestazione";
 	private static final String RECAPITO_NAME = "recapito";
 	private static final String OFFERTA_NAME = "offerta";
 	private static final String UTENTE_NAME = "utente";
